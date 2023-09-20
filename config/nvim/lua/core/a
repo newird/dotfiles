@@ -1,0 +1,39 @@
+-- Navigate vim panes better
+vim.keymap.set("n", "<C-m>", "<Esc>")
+vim.keymap.set("i", "<C-m>", "<Esc>")
+vim.keymap.set("v", "<C-m>", "<Esc>")
+vim.keymap.set("s", "<C-m>", "<Esc>")
+vim.keymap.set("x", "<C-m>", "<Esc>")
+vim.keymap.set("c", "<C-m>", "<C-c>")
+vim.keymap.set("o", "<C-m>", "<Esc>")
+vim.keymap.set("l", "<C-m>", "<Esc>")
+vim.keymap.set("t", "<C-m>", "<Esc>")
+
+
+-- magic search
+-- fzf 
+vim.keymap.set("n", "<Leader>f", "<Esc>:Files<Cr>")
+vim.keymap.set("n", "<Leader>g", "<Esc>:GFiles<Cr>")
+vim.keymap.set("n", "<Leader>b", "<Esc>:Buffers<Cr>")
+vim.keymap.set("n", "<C-f>", ":Rg! ")
+--save
+vim.keymap.set("n", "<Leader>w", "<Esc>:w<Cr>")
+vim.keymap.set("i", "<Leader>w", "<Esc>:w<Cr>")
+vim.keymap.set("v", "<Leader>w", "<Esc>:w<Cr>")
+vim.keymap.set("s", "<Leader>w", "<Esc>:w<Cr>")
+
+
+vim.keymap.set("n", "<Leader>q", "<Esc>:q<Cr>")
+vim.keymap.set("i", "<Leader>q", "<Esc>:q<Cr>")
+vim.keymap.set("v", "<Leader>q", "<Esc>:q<Cr>")
+vim.keymap.set("s", "<Leader>q", "<Esc>:q<Cr>")
+
+
+vim.keymap.set("n", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("i", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("v", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("s", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("x", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("c", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("o", "<Leader>s", "<Esc>:wq<Cr>")
+vim.keymap.set("l", "<Leader>s", "<Esc>:wq<Cr>")

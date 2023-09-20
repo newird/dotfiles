@@ -1,0 +1,59 @@
+#!/bin/sh
+
+picom &
+
+# A function to extract the resolutions of a given monitor and choose the best (highest) one.
+choose_best_resolution() {
+    local monitor="$1"
+    # Get the resolutions supported by the monitor and pick the first one as it's the best
+    resolution=$(xrandr --query | awk -v monitor="$monitor" '/connected/ {p = 0} $0 ~ monitor {p = 1} p && /^[[:space:]]+[0-9]+x[0-9]+/ {print $1; exit}')
+    # Return the resolution
+    echo $resolution
+}
+
+# Get the names of all connected monitors
+monitors=($(xrandr --query | grep " connected" | cut -d" " -f1))
+
+if [[ ${#monitors[@]} -eq 1 ]]; then
+    # Only one monitor connected
+    best_resolution=$(choose_best_resolution "${monitors[0]}")
+    xrandr --output "${monitors[0]}" --mode "$best_resolution" --rotate normal &
+    
+    bspc monitor  "$primary" -d 1 2 3 4 5  6 7 8 9 0 
+elif [[ ${#monitors[@]} -eq 2 ]]; then
+    # Two monitors connected
+    # Assuming DP-2 is always the primary
+    if [[ "${monitors[0]}" == "DP-2" ]]; then
+        primary="${monitors[0]}"
+        external="${monitors[1]}"
+    else
+        primary="${monitors[1]}"
+        external="${monitors[0]}"
+    fi
+
+    best_resolution_primary=$(choose_best_resolution "$primary")
+    best_resolution_external=$(choose_best_resolution "$external")
+
+    xrandr --output "$primary" --mode "$best_resolution_primary" --rotate normal --output "$external" --mode "$best_resolution_external" --rotate normal --right-of "$primary" &
+    bspc monitor  "$primary" -d 1 2 3 4 5  
+    bspc monitor "$external" -d 6 7 8 9 0 
+fi
+
+xset -b &
+
+feh --bg-scale --no-fehbg $HOME/.config/bspwm/wal.jpg &
+$HOME/.config/polybar/launch.sh &
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+
+bspc config border_width        0
+#bspc config focused_border_color "#444b6a"
+#bspc config normal_border_color  "#32344a"
+#bspc config active_border_color  "#444b6a"
+bspc config window_gap          20
+bspc config top_padding         30
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
