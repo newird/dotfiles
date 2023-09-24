@@ -3,6 +3,9 @@ end
 
 # environment
 set -U fish_user_paths /home/newird/.cargo/bin $HOME/.local/bin 
+## fish t for tmux
+fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+
 # function
 # auto update
 function u
@@ -28,6 +31,7 @@ abbr -a rm_list rip --seance
 
 # tmux serssion
 abbr tn tmux new -s 
+abbr tnn tmux new -s  ( pwd | sed 's/.*\///g')
 abbr ta tmux attach -t 
 abbr tl tmux ls 
 abbr tk tmux kill-session -t
@@ -43,12 +47,17 @@ set -gx FZF_CTRL_T_OPTS "--preview 'bat --color=always --line-range :50 {}'"
 
 set -gx FZF_ALT_C_COMMAND 'fd --type d . --color=never --hidden'
 set -gx FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
+# git abbr
+
+abbr -a gm git commit -m
+abbr -a gck git checkout
+abbr -a gl git log --oneline --graph --decorate
+abbr -a gsb git switch 
+abbr -a gcb git checkout -b
 
 
 # my alias
 abbr -a c clear
-abbr -a gm git commit -m
-abbr -a gck git checkout
 abbr -a vv nvim 
 abbr -a ac aicommits
 abbr -a cf clangformat
@@ -60,13 +69,13 @@ abbr -a of onefetch
 abbr -a dg datagrip
 abbr -a ca conda activate
 abbr -a ou ouch decompress
-#exa 
-if command -v exa >> /dev/null
-	abbr -a l exa
-	abbr -a la exa -a
-	abbr -a ll exa -l
-	abbr -a ls exa -l
-	abbr -a lll exa -la
+#eza 
+if command -v eza >> /dev/null
+	abbr -a l eza
+	abbr -a la eza -a
+	abbr -a ll eza -la
+	abbr -a ls eza -l
+	abbr -a lll eza -la
 end
 
 # opam configuration

@@ -19,7 +19,7 @@ if [[ ${#monitors[@]} -eq 1 ]]; then
     best_resolution=$(choose_best_resolution "${monitors[0]}")
     xrandr --output "${monitors[0]}" --mode "$best_resolution" --rotate normal &
     
-    bspc monitor  "$primary" -d 1 2 3 4 5  6 7 8 9 0 
+    bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9 0 
 elif [[ ${#monitors[@]} -eq 2 ]]; then
     # Two monitors connected
     # Assuming DP-2 is always the primary
@@ -30,11 +30,12 @@ elif [[ ${#monitors[@]} -eq 2 ]]; then
         primary="${monitors[1]}"
         external="${monitors[0]}"
     fi
-
+    export EXTERNAL_MONITOR="$external"
     best_resolution_primary=$(choose_best_resolution "$primary")
     best_resolution_external=$(choose_best_resolution "$external")
 
     xrandr --output "$primary" --mode "$best_resolution_primary" --rotate normal --output "$external" --mode "$best_resolution_external" --rotate normal --right-of "$primary" &
+#    xrandr --output DP-2  --mode 1920x1080 --rotate normal --output DP-0   --mode 3840x2160 --rotate normal --right-of DP-2
     bspc monitor  "$primary" -d 1 2 3 4 5  
     bspc monitor "$external" -d 6 7 8 9 0 
 fi

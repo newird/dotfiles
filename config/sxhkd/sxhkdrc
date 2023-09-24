@@ -10,7 +10,12 @@ super + Return
 # program launcher
 super + space
 	rofi -show run
-
+# rofi wifi menu
+super + w
+  rofi-wifi-menu
+# rofi bluetooth menu
+super + b
+  rofi-bluetooth
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -148,13 +153,9 @@ super + shift + m
 super + v
 	rofi run --show
 super + ctrl + b
-	       blt
-
+       blt
 super + shift + p
 		audrofi
-
-super + w
-	wezterm	
 
 super + shift + w
 		wifin
