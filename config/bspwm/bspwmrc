@@ -46,6 +46,8 @@ elif [[ ${#monitors[@]} -eq 2 ]]; then
 fi
 
 xset -b &
+xset -dpms &
+xset s off &
 
 feh --bg-scale --no-fehbg $HOME/.config/bspwm/wal.jpg &
 $HOME/.config/polybar/launch.sh &

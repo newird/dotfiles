@@ -8,4 +8,15 @@ fzf
 rip-grep
 bat
 proximity-sort
+feh 
+bswpm
+picom
+polybar
+sxhkd
+dunst
+rofi
+alacritty
+fish
+neovim
+
 

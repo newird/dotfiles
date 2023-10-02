@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR CLOX_BUILD:/home/newird/code/compiler/craftinginterpreters/build
 SETUVAR CPWD:/home/newird/code/codeforce/852
-SETUVAR FISH:\x2econfig/fish/config\x2efish
+SETUVAR FISH:/home/newird/\x2econfig/fish/config\x2efish
 SETUVAR FZF_DEFAULT_COMMAND:rg\x20\x2d\x2dfiles
 SETUVAR FZF_DEFAULT_OPTS:\x2dm\x20\x2d\x2dheight\x2050\x25\x20\x2d\x2dborder
 SETUVAR FZF_TMUX:1
