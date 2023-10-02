@@ -49,11 +49,17 @@ set -gx FZF_ALT_C_COMMAND 'fd --type d . --color=never --hidden'
 set -gx FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 # git abbr
 
-abbr -a gm git commit -m
+abbr -a gm git commit
+abbr -a gmm git commit -m
 abbr -a gck git checkout
+abbr -a gcb git checkout -b
+abbr -a gcb git checkout -b
 abbr -a gl git log --oneline --graph --decorate
 abbr -a gsb git switch 
-abbr -a gcb git checkout -b
+abbr -a gsu git submodule update --init --recursive
+abbr -a gc git clone
+abbr -a gcr git clone --recurse-submodules
+abbr -a gst git status
 
 
 # my alias

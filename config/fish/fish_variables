@@ -13,6 +13,7 @@ SETUVAR LLVM_TUTOR_BUILD:/home/newird/code/compiler/llvm/llvm\x2dtutor/build
 SETUVAR NAS:/mnt/nas/arch_laptop
 SETUVAR OPENAI_API_KEY:sk\x2dC2qv1N4fdA1bkixoXUksT3BlbkFJavHw1VsUOhNbmX1E1msI
 SETUVAR --path PATH:/home/newird/\x2epyenv/bin\x1e/home/newird/\x2epyenv/shims\x1e/home/newird/\x2efzf/bin\x1e/home/newird/\x2eopam/4\x2e14\x2e0/bin\x1e/home/newird/\x2eopam/4\x2e14\x2e0/bin\x1e/home/newird/\x2eopam/4\x2e14\x2e0/bin\x1e/opt/miniconda/bin\x1e/opt/miniconda/condabin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/newird/\x2ecargo/bin\x1e/home/newird/\x2elocal/bin
+SETUVAR PRIMARY_MONITOR:DP\x2d2
 SETUVAR --export PYENV_ROOT:/home/newird/\x2epyenv
 SETUVAR SHELL:/usr/bin/fish
 SETUVAR SXHKD_SHELL:sh

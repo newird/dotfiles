@@ -14,16 +14,21 @@ choose_best_resolution() {
 # Get the names of all connected monitors
 monitors=($(xrandr --query | grep " connected" | cut -d" " -f1))
 
+
+#------------------------------
+# plase setting your primary monitor
+# name berfore run this script
+#------------------------------
 if [[ ${#monitors[@]} -eq 1 ]]; then
     # Only one monitor connected
     best_resolution=$(choose_best_resolution "${monitors[0]}")
+    export PRIMARY_MONITOR="{monitors[0]}"
     xrandr --output "${monitors[0]}" --mode "$best_resolution" --rotate normal &
-    
-    bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9 0 
+    bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0 
 elif [[ ${#monitors[@]} -eq 2 ]]; then
     # Two monitors connected
     # Assuming DP-2 is always the primary
-    if [[ "${monitors[0]}" == "DP-2" ]]; then
+    if [[ "${monitors[0]}" == "PRIMARY_MONITOR" ]]; then
         primary="${monitors[0]}"
         external="${monitors[1]}"
     else
