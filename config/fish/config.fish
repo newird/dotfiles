@@ -5,7 +5,7 @@ end
 set -U fish_user_paths /home/newird/.cargo/bin $HOME/.local/bin 
 ## fish t for tmux
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
-
+set fish_key_bindings fish_vi_key_bindings
 # function
 # auto update
 function u
