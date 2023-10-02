@@ -1,5 +1,7 @@
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.opt.clipboard =  "unnamedplus"
+
 
 vim.g.rustfmt_autosave = 1
 vim.g.rustfmt_emit_files = 1

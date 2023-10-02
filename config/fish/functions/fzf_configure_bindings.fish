@@ -39,7 +39,7 @@ function fzf_configure_bindings --description "Installs the default key bindings
         end
 
         function _fzf_uninstall_bindings --inherit-variable key_sequences
-            bind --erase -- $key_sequences
+           bind --erase -- $key_sequences
             bind --erase --mode insert -- $key_sequences
         end
     end

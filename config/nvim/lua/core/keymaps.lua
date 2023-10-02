@@ -40,6 +40,19 @@ vim.keymap.set("n", "k", "gk")
 -- <leader><leader> toggles between buffers
 vim.keymap.set("n", "<leader><leader>", "<c-^>")
 
+-- use system  clipboard
+-- Visual mode mappings
+vim.keymap.set("v", "<Leader>y", "+y")
+vim.keymap.set("v", "<Leader>d", "+d")
+
+-- Normal mode mappings
+vim.keymap.set("n", "<Leader>p", "+p")
+vim.keymap.set("n", "<Leader>P", "+P")
+
+-- Visual mode mappings (again, for completeness)
+vim.keymap.set("v", "<Leader>p", "+p")
+vim.keymap.set("v", "<Leader>P", "+P")
+
 -- magic search
 -- fzf 
 vim.keymap.set("n", "<Leader>f", "<Esc>:Files<Cr>")
@@ -48,34 +61,8 @@ vim.keymap.set("n", "<Leader>b", "<Esc>:Buffers<Cr>")
 vim.keymap.set("n", "<C-f>", ":Rg! ")
 --save
 vim.keymap.set("n", "<Leader>w", "<Esc>:w<Cr>")
-vim.keymap.set("i", "<Leader>w", "<Esc>:w<Cr>")
-vim.keymap.set("v", "<Leader>w", "<Esc>:w<Cr>")
-vim.keymap.set("s", "<Leader>w", "<Esc>:w<Cr>")
-
-
 vim.keymap.set("n", "<Leader>q", "<Esc>:q<Cr>")
-vim.keymap.set("i", "<Leader>q", "<Esc>:q<Cr>")
-vim.keymap.set("v", "<Leader>q", "<Esc>:q<Cr>")
-vim.keymap.set("s", "<Leader>q", "<Esc>:q<Cr>")
-
-
 vim.keymap.set("n", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("i", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("v", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("s", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("x", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("c", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("o", "<Leader>s", "<Esc>:wq<Cr>")
-vim.keymap.set("l", "<Leader>s", "<Esc>:wq<Cr>")
-
-
--- <leader><leader> toggles between buffers
-vim.keymap.set("n", "<leader><leader>", "<c-^>")
-
--- Neat ,p will paste clipboard into buffer
--- ,c will copy entire buffer into clipboard
-vim.keymap.set("n", "<leader>p", ":read !wl-paste<cr>")
-vim.keymap.set("n", "<leader>c", ":w !wl-copy<cr><cr>")
 
 -- Search results centered please
 vim.keymap.set("n", "<silent> n", "nzz")
