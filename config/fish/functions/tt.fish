@@ -4,7 +4,7 @@ function tt
     # Exit if no directory was selected
     if test -z "$selected_dir"
         echo "No directory selected."
-        exit 1
+        return 1
     end
 
     # Extract the last directory name from the path using awk
@@ -15,8 +15,17 @@ function tt
 
     # If the exit status of the previous command was 0 (session exists)
     if test $status -eq 0
-        tmux attach -t $session_name
+        if test -n "$TMUX"
+            tmux switch-client -t $session_name # Switch to the chosen session if already inside tmux
+        else
+            tmux attach -t $session_name # Attach to the chosen session if outside tmux
+        end
     else
-        tmux new -s $session_name -c "$selected_dir"
+        tmux new -s $session_name -c "$selected_dir" -d # Create the session detached
+        if test -n "$TMUX"
+            tmux switch-client -t $session_name # Switch to the new session if already inside tmux
+        else
+            tmux attach -t $session_name # Attach to the new session if outside tmux
+        end
     end
 end

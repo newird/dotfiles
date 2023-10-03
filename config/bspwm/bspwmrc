@@ -35,6 +35,7 @@ elif [[ ${#monitors[@]} -eq 2 ]]; then
         primary="${monitors[1]}"
         external="${monitors[0]}"
     fi
+    export PRIMARY_MONITOR="$primary"
     export EXTERNAL_MONITOR="$external"
     best_resolution_primary=$(choose_best_resolution "$primary")
     best_resolution_external=$(choose_best_resolution "$external")
