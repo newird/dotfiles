@@ -33,6 +33,9 @@ vim.keymap.set("i", "<right>", "<nop>")
 vim.keymap.set("n", "<left>", ":bp<CR>")
 vim.keymap.set("n", "<right>", ":bn<CR>")
 
+--trigger terminal
+vim.keymap.set("n" , "<Leader>t" ,":ToggleTerm<CR>")
+
 -- Move by line
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")

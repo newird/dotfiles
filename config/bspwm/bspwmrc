@@ -22,7 +22,7 @@ monitors=($(xrandr --query | grep " connected" | cut -d" " -f1))
 if [[ ${#monitors[@]} -eq 1 ]]; then
     # Only one monitor connected
     best_resolution=$(choose_best_resolution "${monitors[0]}")
-    export PRIMARY_MONITOR="{monitors[0]}"
+    export PRIMARY_MONITOR="${monitors[0]}"
     xrandr --output "${monitors[0]}" --mode "$best_resolution" --rotate normal &
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0 
 elif [[ ${#monitors[@]} -eq 2 ]]; then

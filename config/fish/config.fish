@@ -27,7 +27,12 @@ end
 abbr -a rm rip 
 abbr -a clean_trash rip --decompose
 abbr -a rm_list rip --seance
+abbr -a cz rip --unbury
+abbr -a recover rip --seance --unbury
 
+# set  system clipboard
+abbr -a clip xclip -sel clip
+abbr -a co xclip -o 
 
 # tmux serssion
 abbr tn tmux new -s 

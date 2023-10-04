@@ -1,5 +1,5 @@
 function tt
-    set selected_dir (fd -t d | fzf)
+    set selected_dir (fd -t d --hidden | fzf)
 
     # Exit if no directory was selected
     if test -z "$selected_dir"

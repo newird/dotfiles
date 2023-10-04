@@ -29,13 +29,19 @@ local plugins = {
   'tpope/vim-commentary',
   --fzf
  'airblade/vim-rooter',
-  { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" },
+  { "junegunn/fzf", dir = "~/.fzf", name="fzf", build = "./install --all" },
   'junegunn/fzf.vim',
   -- rust babyyyyyyy
   'mfussenegger/nvim-dap',
   'rcarriga/nvim-dap-ui',
   'simrat39/rust-tools.nvim',
 
+  -- terminal
+
+  {
+  -- amongst your other plugins
+     {'akinsho/toggleterm.nvim', version = "*", config = true}
+  },
   -- completion
   'jiangmiao/auto-pairs' ,
   'hrsh7th/nvim-cmp',
