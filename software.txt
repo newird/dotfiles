@@ -1,15 +1,12 @@
 #this is a list of software i have installed
-
 #generate compile config json
 bear 
 #find file
 fd
 fzf
-rip-grep
 bat
-proximity-sort
 feh 
-bswpm
+bspwm
 picom
 polybar
 sxhkd
@@ -18,5 +15,6 @@ rofi
 alacritty
 fish
 neovim
-
-
+xclip
+firefox
+zsh
