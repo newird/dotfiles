@@ -13,7 +13,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- undo
-vim.opt.undodir = os.getenv("HOME") .. "/.vimdid"
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/vimdid"
 vim.opt.undofile = true
 
 vim.opt.backspace = '2'
@@ -28,6 +28,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
+vim.opt.scrolloff= 8
 
 vim.cmd [[ set noswapfile ]]
 

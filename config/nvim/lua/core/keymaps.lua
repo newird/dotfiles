@@ -1,25 +1,21 @@
 -- this file was mostly translate from 
 -- https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim
 -- Navigate vim panes better
-vim.keymap.set("n", "<C-j>", "<Esc>")
-vim.keymap.set("i", "<C-j>", "<Esc>")
-vim.keymap.set("v", "<C-j>", "<Esc>")
-vim.keymap.set("s", "<C-j>", "<Esc>")
-vim.keymap.set("x", "<C-j>", "<Esc>")
-vim.keymap.set("c", "<C-j>", "<C-c>")
-vim.keymap.set("o", "<C-j>", "<Esc>")
-vim.keymap.set("l", "<C-j>", "<Esc>")
-vim.keymap.set("t", "<C-j>", "<Esc>")
 
-vim.keymap.set("n", "<C-k>", "<Esc>")
-vim.keymap.set("i", "<C-k>", "<Esc>")
-vim.keymap.set("v", "<C-k>", "<Esc>")
-vim.keymap.set("s", "<C-k>", "<Esc>")
-vim.keymap.set("x", "<C-k>", "<Esc>")
-vim.keymap.set("c", "<C-k>", "<C-c>")
-vim.keymap.set("o", "<C-k>", "<Esc>")
-vim.keymap.set("l", "<C-k>", "<Esc>")
-vim.keymap.set("t", "<C-k>", "<Esc>")
+vim.keymap.set("n", "<C-c>", "<Esc>")
+vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("v", "<C-c>", "<Esc>")
+vim.keymap.set("s", "<C-c>", "<Esc>")
+vim.keymap.set("x", "<C-c>", "<Esc>")
+vim.keymap.set("c", "<C-c>", "<C-c>")
+vim.keymap.set("o", "<C-c>", "<Esc>")
+vim.keymap.set("l", "<C-c>", "<Esc>")
+vim.keymap.set("t", "<C-c>", "<Esc>")
+
+
+--remove file 
+vim.keymap.set("n", "<Leader>rb",":bdelete")
+vim.keymap.set("n", "<Leader>rf",":UseFZFToRemoveFiles")
 
 -- No arrow keys --- force yourself to use the home row
 vim.keymap.set("n", "<up>", "<nop>")
@@ -40,9 +36,6 @@ vim.keymap.set("n" , "<Leader>t" ,":ToggleTerm<CR>")
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
--- <leader><leader> toggles between buffers
-vim.keymap.set("n", "<leader><leader>", "<c-^>")
-
 -- use system  clipboard
 -- Visual mode mappings
 vim.keymap.set("v", "<Leader>y", "+y")
@@ -57,6 +50,19 @@ vim.keymap.set("v", "<Leader>p", "+p")
 vim.keymap.set("v", "<Leader>P", "+P")
 
 -- magic search
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+vim.keymap.set("n", "<C-s>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- fzf 
 vim.keymap.set("n", "<Leader>f", "<Esc>:Files<Cr>")
 vim.keymap.set("n", "<Leader>g", "<Esc>:GFiles<Cr>")

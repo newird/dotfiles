@@ -135,7 +135,7 @@ super + {Left,Down,Up,Right}
 #dwm hotkeys
 
 # My Hotkeys
-
+# screenshot
 Print
 	maim --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
 
