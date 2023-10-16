@@ -4,7 +4,7 @@ end
 # environment
 set -U fish_user_paths /home/newird/.cargo/bin $HOME/.local/bin 
 ## fish t for tmux
-fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+fish_add_path /home/newird/.deno/bin /home/newird/git/fzf-fuzzy/bin
 set fish_key_bindings fish_vi_key_bindings
 # function
 # auto update
@@ -56,15 +56,10 @@ set -gx FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
 
 abbr -a gm git commit
 abbr -a gmm git commit -m
-abbr -a gck git checkout
-abbr -a gcb git checkout -b
-abbr -a gcb git checkout -b
-abbr -a gl git log --oneline --graph --decorate
 abbr -a gsb git switch 
 abbr -a gsu git submodule update --init --recursive
 abbr -a gc git clone
 abbr -a gcr git clone --recurse-submodules
-abbr -a gst git status
 
 
 # my alias

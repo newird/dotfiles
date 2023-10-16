@@ -22,12 +22,15 @@ local plugins = {
   {dir = "~/git/fileman" , name = "fileman" ,
 	  dependencies = { {'junegunn/fzf.vim'} },
   },
+  {dir = "/home/newird/lession/cs6120/bril/bril-vim" } ,
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'mbbill/undotree',
   "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
   'nvim-treesitter/playground',
   'nvim-treesitter/nvim-treesitter-context',
+  { "folke/neodev.nvim", opts = {} },
+  'neovim/nvim-lspconfig',
   'nvim-lualine/lualine.nvim',
-  'bluz71/vim-nightfly-colors',
   'vim-test/vim-test',
   'lewis6991/gitsigns.nvim',
   'preservim/vimux',
@@ -38,11 +41,24 @@ local plugins = {
  'airblade/vim-rooter',
   { "junegunn/fzf", dir = "~/.fzf", name="fzf", build = "./install --all" },
   'junegunn/fzf.vim',
-  -- rust babyyyyyyy
-  'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
-  'simrat39/rust-tools.nvim',
 
+  -- debugger 
+  'theHamsta/nvim-dap-virtual-text' ,
+  'mfussenegger/nvim-dap',
+  {'rcarriga/nvim-dap-ui',dependencies="mfussenegger/nvim-dap"},
+
+  -- rust babyyyyyyy
+  'rust-lang/rust.vim',
+  'simrat39/rust-tools.nvim',
+  'nvim-lua/plenary.nvim',
+  {
+    'saecki/crates.nvim',
+    tag = 'v0.4.0',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('crates').setup()
+    end,
+  },
   -- terminal
 
   {

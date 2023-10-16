@@ -2,8 +2,10 @@ require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "lua", "vim", "rust", "cpp", "go" , "python" , "java" },
 
+  -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
 
 
@@ -12,4 +14,7 @@ require'nvim-treesitter.configs'.setup {
 
     additional_vim_regex_highlighting = false,
   },
+  indent = {
+    enable = true ,
+  }
 }
