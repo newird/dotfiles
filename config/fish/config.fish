@@ -81,7 +81,7 @@ if command -v eza >> /dev/null
 	abbr -a la eza -a
 	abbr -a ll eza -la
 	abbr -a ls eza -l
-	abbr -a lll eza -la
+	abbr -a lll eza -la --icons
 end
 
 # opam configuration
@@ -94,3 +94,7 @@ if test -f /opt/anaconda/bin/conda
 end
 # <<< conda initialize <<<
 
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

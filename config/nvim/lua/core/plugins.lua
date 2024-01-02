@@ -19,17 +19,15 @@ local plugins = {
     'dracula/vim',
     lazy = false,
   },
-  {dir = "~/git/fileman" , name = "fileman" ,
-	  dependencies = { {'junegunn/fzf.vim'} },
+  {
+    dir = "~/git/fileman",
+    name = "fileman",
+    dependencies = { { 'junegunn/fzf.vim' } },
   },
-  {dir = "/home/newird/lession/cs6120/bril/bril-vim" } ,
+  { dir = "/home/newird/lession/cs6120/bril/bril-vim" },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   'mbbill/undotree',
-  "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
-  'nvim-treesitter/playground',
-  'nvim-treesitter/nvim-treesitter-context',
   { "folke/neodev.nvim", opts = {} },
-  'neovim/nvim-lspconfig',
   'nvim-lualine/lualine.nvim',
   'vim-test/vim-test',
   'lewis6991/gitsigns.nvim',
@@ -37,15 +35,16 @@ local plugins = {
   'christoomey/vim-tmux-navigator',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
+
   --fzf
- 'airblade/vim-rooter',
-  { "junegunn/fzf", dir = "~/.fzf", name="fzf", build = "./install --all" },
+  'airblade/vim-rooter',
+  { "junegunn/fzf",      dir = "~/.fzf", name = "fzf", build = "./install --all" },
   'junegunn/fzf.vim',
 
-  -- debugger 
-  'theHamsta/nvim-dap-virtual-text' ,
+  -- debugger
+  'theHamsta/nvim-dap-virtual-text',
   'mfussenegger/nvim-dap',
-  {'rcarriga/nvim-dap-ui',dependencies="mfussenegger/nvim-dap"},
+  { 'rcarriga/nvim-dap-ui', dependencies = "mfussenegger/nvim-dap" },
 
   -- rust babyyyyyyy
   'rust-lang/rust.vim',
@@ -62,25 +61,32 @@ local plugins = {
   -- terminal
 
   {
-  -- amongst your other plugins
-     {'akinsho/toggleterm.nvim', version = "*", config = true}
+    -- amongst your other plugins
+    { 'akinsho/toggleterm.nvim', version = "*", config = true }
   },
   -- completion
-  'jiangmiao/auto-pairs' ,
+  'jiangmiao/auto-pairs',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
-  'L3MON4D3/LuaSnip',
+  "L3MON4D3/LuaSnip",
   'saadparwaiz1/cmp_luasnip',
   "rafamadriz/friendly-snippets",
   "github/copilot.vim",
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+  'nvim-treesitter/playground',
+  'nvim-treesitter/nvim-treesitter-context',
+  'nvim-treesitter/nvim-treesitter-refactor',
   "glepnir/lspsaga.nvim",
   {
-	  'nvim-telescope/telescope.nvim',
-	  tag = '0.1.0',
-	  dependencies = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.0',
+    dependencies = { { 'nvim-lua/plenary.nvim' } }
   }
 
 }

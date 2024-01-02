@@ -8,7 +8,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 require('lspsaga').setup({
-  code_action_icon = "💡",
+  code_action_icon = "",
+  lightbulb = {
+    enable = false,
+    sign = true,
+  },
   symbol_in_winbar = {
     in_custom = false,
     enable = true,

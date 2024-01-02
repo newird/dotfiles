@@ -14,6 +14,27 @@ choose_best_resolution() {
 # Get the names of all connected monitors
 monitors=($(xrandr --query | grep " connected" | cut -d" " -f1))
 
+apply_scaling() {
+    local monitor="$1"
+    local scale_factor="0.8"
+
+    # Fetch the current resolution of the monitor
+    current_resolution=$(xrandr --query | grep "${monitor}" | grep -o '[0-9]\+x[0-9]\+' | head -n1)
+
+    # Parse the width and height from the resolution
+    read width height <<< $(echo $current_resolution | sed 's/x/ /')
+
+    # Check if the current resolution is 4K (3840x2160)
+    if [[ "$width" -eq 3840 && "$height" -eq 2160 ]]; then
+
+        # Round the values since 'bc' may return floating-point numbers
+        scaled_width=$(printf "%.0f" "$scaled_width")
+        scaled_height=$(printf "%.0f" "$scaled_height")
+
+        # Apply scaling and panning to simulate higher DPI
+        xrandr --output "$monitor" --scale "${scale_factor}x${scale_factor}" 
+    fi
+}
 
 #------------------------------
 # plase setting your primary monitor
@@ -24,6 +45,7 @@ if [[ ${#monitors[@]} -eq 1 ]]; then
     best_resolution=$(choose_best_resolution "${monitors[0]}")
     export PRIMARY_MONITOR="${monitors[0]}"
     xrandr --output "${monitors[0]}" --mode "$best_resolution" --rotate normal &
+    apply_scaling "${monitors[0]}"
     bspc monitor $PRIMARY_MONITOR -d 1 2 3 4 5 6 7 8 9 0 
 elif [[ ${#monitors[@]} -eq 2 ]]; then
     # Two monitors connected
@@ -41,6 +63,8 @@ elif [[ ${#monitors[@]} -eq 2 ]]; then
     best_resolution_external=$(choose_best_resolution "$external")
 
     xrandr --output "$primary" --mode "$best_resolution_primary" --rotate normal --output "$external" --mode "$best_resolution_external" --rotate normal --right-of "$primary" &
+    apply_scaling "$primary"
+    apply_scaling "$external"
 #    xrandr --output DP-2  --mode 1920x1080 --rotate normal --output DP-0   --mode 3840x2160 --rotate normal --right-of DP-2
     bspc monitor  "$primary" -d 1 2 3 4 5  
     bspc monitor "$external" -d 6 7 8 9 0 
@@ -56,6 +80,7 @@ $HOME/.config/polybar/launch.sh &
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc rule -a maim  state=floating 
+bspc rule -a peek sticky=on state=fullscreen
 bspc rule -a mupdf  state=floating 
 bspc config border_width        0
 #bspc config focused_border_color "#444b6a"

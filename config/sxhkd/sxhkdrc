@@ -136,11 +136,11 @@ super + {Left,Down,Up,Right}
 
 # My Hotkeys
 # screenshot
-Print
-	maim -o --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
-
 super + shift + s
-	maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
+	maim -o --select | tee ~/pix/ss/$(date +%Y-%m-%d-%H-%M-%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
+
+Print
+	maim | tee ~/pix/ss/$(date +%Y-%m-%d-%H-%M-%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	pamixer -{i,d,t} 5; kill -34 $(cat ~/.cache/pidofbar)
