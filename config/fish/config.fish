@@ -1,4 +1,5 @@
 if status is-interactive
+  # atuin 
   atuin init fish | source
 end
 
