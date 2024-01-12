@@ -48,8 +48,12 @@ local plugins = {
 
   -- rust babyyyyyyy
   'rust-lang/rust.vim',
-  'simrat39/rust-tools.nvim',
   'nvim-lua/plenary.nvim',
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^3', -- Recommended
+    ft = { 'rust' },
+  },
   {
     'saecki/crates.nvim',
     tag = 'v0.4.0',
@@ -58,8 +62,41 @@ local plugins = {
       require('crates').setup()
     end,
   },
-  -- terminal
 
+  -- ts
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    ft = {"ts", 'js'},
+    opts = {},
+  },
+
+  -- go
+  {
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  },
+
+  -- markdown
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+
+  -- terminal
   {
     -- amongst your other plugins
     { 'akinsho/toggleterm.nvim', version = "*", config = true }
@@ -83,9 +120,19 @@ local plugins = {
   'nvim-treesitter/nvim-treesitter-context',
   'nvim-treesitter/nvim-treesitter-refactor',
   "glepnir/lspsaga.nvim",
+  -- format
+  'google/vim-maktaba',
+  {
+    'google/vim-codefmt',
+    dependencies = {'google/vim-maktaba'},
+  },
+  {
+    'google/vim-glaive',
+    dependencies = {'google/vim-maktaba'},
+  },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
+    tag = '0.1.5',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   }
 
