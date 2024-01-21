@@ -3,7 +3,7 @@ local dap = require('dap')
 
 dap.adapters.cpp = {
   type = 'executable',
-  command = 'lldb-vscode',  -- Adjust to 'gdb', 'gdbserver', etc., if needed
+  command =  '/usr/bin/lldb-vscode',  -- Adjust to 'gdb', 'gdbserver', etc., if needed
   name = "lldb"
 }
 

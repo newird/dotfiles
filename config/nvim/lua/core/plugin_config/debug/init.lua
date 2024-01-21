@@ -1,5 +1,7 @@
 require("core.plugin_config.debug.python-dap")
 require("core.plugin_config.debug.cpp-dap")
+require("core.plugin_config.debug.rust-dap")
+require("core.plugin_config.debug.go-dap")
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()

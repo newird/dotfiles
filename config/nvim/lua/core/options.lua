@@ -1,6 +1,16 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.opt.clipboard =  "unnamedplus"
+vim.opt.clipboard =  'unnamedplus'
+
+vim.api.nvim_create_autocmd("BufWinLeave", {
+    pattern = "*",
+    callback = function()
+        if vim.fn.exists("b:changedtick") == 1 and vim.fn.filereadable(vim.fn.expand("%")) == 1 then
+            vim.cmd("silent! w")
+        end
+    end
+})
+
 
 --  set opacity 
 vim.cmd[[hi Normal guibg=NONE ctermbg=NONE]]

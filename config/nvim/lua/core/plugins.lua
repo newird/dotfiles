@@ -72,6 +72,7 @@ local plugins = {
   },
 
   -- go
+   'leoluz/nvim-dap-go',
   {
     "ray-x/go.nvim",
     dependencies = {  -- optional packages
@@ -95,11 +96,23 @@ local plugins = {
     build = function() vim.fn["mkdp#util#install"]() end,
   },
 
+  --latex
+  'lervag/vimtex',
+  "evesdropper/luasnip-latex-snippets.nvim",
 
   -- terminal
   {
     -- amongst your other plugins
     { 'akinsho/toggleterm.nvim', version = "*", config = true }
+  },
+  --lazygit
+  {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
   },
   -- completion
   'jiangmiao/auto-pairs',
