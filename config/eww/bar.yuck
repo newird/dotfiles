@@ -1,0 +1,79 @@
+(defpoll volumePercent :interval "3s"
+  "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll timeStr :interval "10s" "date +'%I:%M %p - %b %d, %Y'")
+
+(deflisten musicStatus :initial "" "./scripts/music.sh status")
+(deflisten song :initial "Looking for a song..." "./scripts/music.sh song")
+
+(deflisten workspaceCode "./scripts/workspaces.sh")
+
+(defwidget mem []
+  (label :halign "start" :text " ${round(EWW_RAM.used_mem_perc,1)}%")
+)
+
+(defwidget cpu []
+  (label :halign "start" :text " ${round(EWW_CPU.avg,1)}%")
+)
+
+
+(defwidget music []
+  (box :spacing 10 :valign "center" :halign "end" :space-evenly false
+    (label :halign "start" :wrap false
+      :tooltip song
+      :limit-width 40 :class "sans" :text song)
+    (button :class "blue hover-sky" :onclick "mpc prev" "")
+    (button :class "green hover-sky" :onclick "mpc toggle" musicStatus)
+    (button :class "blue hover-sky" :onclick "mpc next" "")
+  )
+)
+
+(defwidget volume []
+  (box :space-evenly false :spacing 3
+    (label :class "text-sm" :text " ")
+    (scale :value volumePercent :max 100 :min 0
+      :onchange "amixer -D pulse sset Master {}%")
+  )
+)
+
+(defwidget time []
+  (box :class "container bold"
+    (button :class "text-xs" :orientation "v" timeStr)
+  )
+)
+
+(defwidget bluetooth []
+    (button :class "icon" :onclick "rofi-bluetooth" "" )
+)
+
+(defwidget wifi []
+    (button :class "icon" :onclick "rofi-wifi" "" )
+)
+(defwindow bar
+  :monitor 0
+  :reserve (struts :distance "32px" :side "top")
+  :geometry (geometry :height "32px" :width "100%"
+    :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  (centerbox
+    (box :space-evenly false :halign "start" :valign "center"
+      :class "px-2"
+      :hexpand true :spacing 10
+      (box :class "container" :spacing 30 :active false
+        (mem)
+        (cpu)
+      )
+      (volume)
+    )
+
+    (literal :halign "center" :hexpand true :content workspaceCode)
+
+    (box :halign "end" :hexpand true :space-evenly false :spacing 10
+      :class "px-2"
+      (bluetooth)
+      (wifi)
+      (music)
+      (time)
+    )
+  )
+)

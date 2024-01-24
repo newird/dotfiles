@@ -6,7 +6,7 @@ blink_interval = 550
 unfocused_hollow = false
 
 [font]
-size = 14.0
+size = 24.0
 [cursor.style]
 blinking = "On"
 shape = "Block"
