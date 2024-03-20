@@ -48,14 +48,17 @@ require("lspconfig").lua_ls.setup {
 }
 
 lspconfig.solargraph.setup {
-  capabilities = capabilities,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
-
-lspconfig.pyright.setup {
-  capabilities = capabilities,
-}
+require("lspconfig").pyright.setup({
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      on_attach = function(client, bufnr)
+      lspconfig.on_attach(client, bufnr)
+      vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+    end,
+})
 lspconfig.clangd.setup {
-  capabilities = capabilities,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
       on_attach = function(client, bufnr)
       lspconfig.on_attach(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
@@ -67,3 +70,15 @@ lspconfig.clangd.setup {
   },
 }
 
+lspconfig.gopls.setup({
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})

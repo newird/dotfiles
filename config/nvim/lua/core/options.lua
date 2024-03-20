@@ -2,23 +2,42 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.clipboard =  'unnamedplus'
 
-vim.api.nvim_create_autocmd("BufWinLeave", {
-    pattern = "*",
-    callback = function()
-        if vim.fn.exists("b:changedtick") == 1 and vim.fn.filereadable(vim.fn.expand("%")) == 1 then
-            vim.cmd("silent! w")
-        end
+-- vim.api.nvim_create_autocmd("BufWinLeave", {
+--     pattern = "*",
+--     callback = function()
+--         if vim.fn.exists("b:changedtick") == 1 and vim.fn.filereadable(vim.fn.expand("%")) == 1 then
+--             vim.cmd("silent! w")
+--         end
+--     end
+-- })
+vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = "LspAttach_inlayhints",
+  callback = function(args)
+    if not (args.data and args.data.client_id) then
+      return
     end
+
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    require("lsp-inlayhints").on_attach(client, bufnr)
+  end,
 })
+-- for neovide
 
-
---  set opacity 
+if vim.g.neovide then
+    -- Put anything you want to happen only in Neovide here
+  local alpha = function()
+    return string.format("%x", 0.9)
+  end
+  -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+  vim.g.neovide_transparency = 0.8
+  vim.g.transparency = 0.6
+  vim.g.neovide_background_color = "#0f1117" .. alpha()
+end
+--  set opacity
 vim.cmd[[hi Normal guibg=NONE ctermbg=NONE]]
 
-vim.g.rustfmt_autosave = 1
-vim.g.rustfmt_emit_files = 1
-vim.g.rustfmt_fail_silently = 0
-vim.g.rust_clip_command = "xclip -selection clipboard"
 
 -- relevate line
 vim.wo.number = true

@@ -1,23 +1,25 @@
--- vim.g.rustaceanvim = {
---   tools = {
---   },
---   server = {
---     capabilities = require("cmp_nvim_lsp").default_capabilities(),
---     on_attach = function(client, bufnr)
---       -- you can also put keymaps in here
---     end,
---     settings = {
---       -- rust-analyzer language server configuration
---       ['rust-analyzer'] = {
---       },
---     },
---   },
---   -- DAP configuration
---   dap = {
---     adapter = {
---       type = "executable",
---       command = "lldb-vscode",
---       name = "rt_lldb",
---    },
---   }
--- }
+
+vim.g.rustaceanvim = {
+  server = {
+    on_attach = function(client, bufnr)
+      vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+
+    end,
+    settings = {
+      ["rust-analyzer"] = {
+        cargo = {
+          allFeatures = true,
+          loadOutDirsFromCheck = true,
+          runBuildScripts = true,
+        },
+        checkOnSave = {
+          command = "clippy",
+          extraArgs = { "--no-deps" },
+        },
+        procMacro = {
+          enable = true,
+        },
+      },
+    },
+  },
+}

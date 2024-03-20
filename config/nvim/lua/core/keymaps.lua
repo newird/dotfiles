@@ -1,4 +1,4 @@
--- this file was mostly translate from 
+-- this file was mostly translate from
 -- https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim
 -- Navigate vim panes better
 
@@ -13,7 +13,7 @@ vim.keymap.set("l", "<C-c>", "<Esc>")
 vim.keymap.set("t", "<C-c>", "<Esc>")
 
 
---remove file 
+--remove file
 vim.keymap.set("n", "<Leader>rb",":bdelete")
 vim.keymap.set("n", "<Leader>rf",":UseFZFToRemoveFiles")
 
@@ -41,14 +41,19 @@ vim.keymap.set("n", "k", "gk")
 vim.keymap.set("v", "<Leader>y", "+y")
 vim.keymap.set("v", "<Leader>d", "+d")
 
--- Normal mode mappings
-vim.keymap.set("n", "<Leader>p", "+p")
-vim.keymap.set("n", "<Leader>P", "+P")
 
 -- Visual mode mappings (again, for completeness)
 vim.keymap.set("v", "<Leader>p", "+p")
 vim.keymap.set("v", "<Leader>P", "+P")
 
+-- greatest remap ever
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 -- magic search
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -63,7 +68,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<C-s>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
--- fzf 
+-- fzf
 vim.keymap.set("n", "<Leader>f", "<Esc>:Files<Cr>")
 vim.keymap.set("n", "<Leader>g", "<Esc>:GFiles<Cr>")
 vim.keymap.set("n", "<Leader>b", "<Esc>:Buffers<Cr>")

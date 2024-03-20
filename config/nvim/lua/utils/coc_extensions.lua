@@ -40,7 +40,6 @@ local extensions = {
   'coc-markdown-preview-enhanced', -- Markdown Preview Enhanced for coc.nvim
   'coc-pydocstring', -- for `python`, using doq (python docstring generator) extension.
   'coc-pyright', -- for `python`, Pyright extension.
-  'coc-rust-analyzer', -- for `rust`, use rust-analyzer.
   'coc-sh', -- for `bash` using bash-language-server.
   'coc-snippets', -- provides snippets solution.
   'coc-sql', -- for `sql`.

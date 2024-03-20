@@ -32,7 +32,23 @@ local plugins = {
   'vim-test/vim-test',
   'lewis6991/gitsigns.nvim',
   'preservim/vimux',
-  'christoomey/vim-tmux-navigator',
+  {
+  "christoomey/vim-tmux-navigator",
+  cmd = {
+    "TmuxNavigateLeft",
+    "TmuxNavigateDown",
+    "TmuxNavigateUp",
+    "TmuxNavigateRight",
+    "TmuxNavigatePrevious",
+  },
+  keys = {
+    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+  },
+},
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
 
@@ -49,11 +65,11 @@ local plugins = {
   -- rust babyyyyyyy
   'rust-lang/rust.vim',
   'nvim-lua/plenary.nvim',
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
-    ft = { 'rust' },
-  },
+   {
+     'mrcjkb/rustaceanvim',
+     version = '^4', -- Recommended
+     ft = { 'rust' },
+   },
   {
     'saecki/crates.nvim',
     tag = 'v0.4.0',
@@ -118,12 +134,18 @@ local plugins = {
   'jiangmiao/auto-pairs',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-emoji',
+  'hrsh7th/cmp-calc',
+  'hrsh7th/cmp-nvim-lsp-signature-help',
+  '/lvimuser/lsp-inlayhints.nvim',
   "L3MON4D3/LuaSnip",
   'saadparwaiz1/cmp_luasnip',
   "rafamadriz/friendly-snippets",
   "github/copilot.vim",
   "williamboman/mason.nvim",
-  "neovim/nvim-lspconfig",
+  {
+    "neovim/nvim-lspconfig",
+  },
   "williamboman/mason-lspconfig.nvim",
   {
     "nvim-treesitter/nvim-treesitter",
