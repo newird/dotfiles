@@ -1,54 +1,36 @@
- local autoformat_settings = {
-     bzl = "buildifier",
-     c = "clang-format",
-     cpp = "clang-format",
-     proto = "clang-format",
-     javascript = "clang-format",
-     arduino = "clang-format",
-     dart = "dartfmt",
-     go = "gofmt",
-     gn = "gn",
-     html = "js-beautify",
-     css = "js-beautify",
-     sass = "js-beautify",
-     scss = "js-beautify",
-     less = "js-beautify",
-     json = "js-beautify",
-     java = "google-java-format",
-     python = "yapf", -- or "autopep8"
-     rust = "rustfmt",
-     vue = "prettier",
-     swift = "swift-format"
- }
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    -- Conform will run multiple formatters sequentially
+    python = function(bufnr)
+      if require("conform").get_formatter_info("ruff_format", bufnr).available then
+        return { "ruff_format" }
+      else
+        return { "isort", "black" }
+      end
+    end,
+    -- Use a sub-list to run only the first available formatter
+    javascript = { { "prettierd", "prettier" } },
+    go = { "goimports", "gofmt" },
+    cpp  = {"clang_format"},
+    c  = {"clang_format"},
+    fish = {"fish_indent"},
+    ["_"] = { "trim_whitespace" , "autocorrect "},
+  },
+})
 
- vim.api.nvim_create_augroup("AutoFormatSettings", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})
 
- for filetype, formatter in pairs(autoformat_settings) do
-     vim.api.nvim_create_autocmd("FileType", {
-         group = "AutoFormatSettings",
-         pattern = filetype,
-         command = "AutoFormatBuffer " .. formatter
-     })
- end
 
- -- Mapping <Leader>= to prefix a command
- vim.api.nvim_set_keymap('n', '<Leader>=', ':FormatCode ', { noremap = true, silent = false })
-
- -- Create an autocmd group for auto formatting
- vim.api.nvim_create_augroup("AutoFormatOnSave", { clear = true })
-
- -- Set up autocmd to auto format on buffer save
-  vim.api.nvim_create_autocmd("BufWritePre", {
-      group = "AutoFormatOnSave",
-   pattern = {"*.py", "*.cpp", "*.js", "*.go", "*.rs"},
-      command = "FormatCode"
-  })
- vim.api.nvim_create_autocmd("BufWritePre", {
-     pattern = "*",
-     callback = function()
-         local saved_view = vim.fn.winsaveview()
-         vim.cmd("%s/\\s\\+$//e")
-         vim.fn.winrestview(saved_view)
-     end
- })
-
+-- Key mapping for formatting
+vim.api.nvim_set_keymap(
+  "n", -- Use an empty string for mode to set the keymap for all modes
+  "<leader>=", -- The key combination
+  ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", -- The command to execute
+  { noremap = true, silent = true, desc = "Format buffer" } -- Options for the keymap
+)

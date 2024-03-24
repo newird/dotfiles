@@ -76,7 +76,6 @@ vim.keymap.set("n", "<C-f>", ":Rg! ")
 --save
 vim.keymap.set("n", "<Leader>w", "<Esc>:w<Cr>")
 vim.keymap.set("n", "<Leader>q", "<Esc>:q<Cr>")
-vim.keymap.set("n", "<Leader>s", "<Esc>:wq<Cr>")
 
 -- Search results centered please
 vim.keymap.set("n", "<silent> n", "nzz")

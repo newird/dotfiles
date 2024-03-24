@@ -1,5 +1,5 @@
 if status is-interactive
-    # atuin 
+    # atuin
     atuin init fish | source
 
 end
@@ -10,15 +10,17 @@ set -U fish_user_paths /home/newird/.cargo/bin $HOME/.local/bin
 fish_add_path /home/newird/.deno/bin /home/newird/git/fzf-fuzzy/bin
 fish_add_path $GOPATH/bin
 set fish_key_bindings fish_vi_key_bindings
+
 # function
 # auto update
 function u
     paru
 end
 abbr -a paru paru --bottomup
+abbr -a pp paruz
 
 # exec node
-#if command -v node > /dev/null 2>&1  
+#if command -v node > /dev/null 2>&1
 #	node -v  > /dev/null 2>&1
 #end
 # use bar replace cat
@@ -46,7 +48,7 @@ abbr tnn tmux new -s ( pwd | sed 's/.*\///g')
 abbr ta tmux attach -t
 abbr tl tmux ls
 abbr tk tmux kill-session -t
-# rg 
+# rg
 abbr -a rgg rg --glob
 
 # fzf
@@ -67,7 +69,7 @@ abbr -a gsu git submodule update --init --recursive
 abbr -a gc git clone
 abbr -a gcr git clone --recurse-submodules
 
-# for cd 
+# for cd
 abbr -a ... ../..
 abbr -a .... ../../..
 abbr -a ..... ../../../..
@@ -83,9 +85,9 @@ abbr -a of onefetch
 abbr -a dg datagrip
 abbr -a ca conda activate
 abbr -a ou ouch decompress
-## uu 
+## uu
 source /home/newird/.config/fish/alias/uu.fish
-#eza 
+#eza
 if command -v eza >>/dev/null
     abbr -a l eza
     abbr -a la eza -a

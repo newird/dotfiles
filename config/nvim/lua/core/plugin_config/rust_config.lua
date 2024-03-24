@@ -2,7 +2,9 @@
 vim.g.rustaceanvim = {
   server = {
     on_attach = function(client, bufnr)
-      vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+      require("lsp-format").on_attach(client, bufnr)
+      vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
+         vim.keymap.set("n", "<leader>m", function() if vim.lsp.inlay_hint.is_enabled() then vim.lsp.inlay_hint.enable(0, false) else vim.lsp.inlay_hint.enable(0, true) end end, { desc = "Toggle Inlay Hints" })
 
     end,
     settings = {

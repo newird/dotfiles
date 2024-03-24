@@ -10,6 +10,7 @@ vim.opt.clipboard =  'unnamedplus'
 --         end
 --     end
 -- })
+
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = "LspAttach_inlayhints",
