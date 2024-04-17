@@ -72,6 +72,27 @@ local plugins = {
   'mfussenegger/nvim-dap',
   { 'rcarriga/nvim-dap-ui', dependencies = "mfussenegger/nvim-dap" },
 
+  -- competitive 
+  {
+    'xeluxee/competitest.nvim',
+    dependencies = 'MunifTanjim/nui.nvim',
+  },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim", -- telescope 所需
+      "MunifTanjim/nui.nvim",
+
+      "nvim-treesitter/nvim-treesitter",
+      "rcarriga/nvim-notify",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+        -- configuration goes here
+    },
+  },
   -- rust babyyyyyyy
   'rust-lang/rust.vim',
   'nvim-lua/plenary.nvim',
@@ -113,7 +134,9 @@ local plugins = {
     ft = {"go", 'gomod'},
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
-
+  --image preview 
+  {'edluffy/hologram.nvim'
+  },
   -- markdown
   {
     "iamcco/markdown-preview.nvim",
@@ -143,6 +166,7 @@ local plugins = {
   -- completion
   'jiangmiao/auto-pairs',
   'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-path',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-emoji',
   'hrsh7th/cmp-calc',
@@ -230,15 +254,6 @@ local plugins = {
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        python = {"ruff"},
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
-      },
     },
   },
   {

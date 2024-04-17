@@ -137,7 +137,7 @@ super + {Left,Down,Up,Right}
 # My Hotkeys
 # screenshot
 super + shift + s
-	maim -o --select | tee ~/pix/ss/$(date +%Y-%m-%d-%H-%M-%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
+	maim -o --select | tee ~/pix/ss/$(date +%Y%m%d%H%M%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
 
 Print
 	maim | tee ~/pix/ss/$(date +%Y-%m-%d-%H-%M-%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"

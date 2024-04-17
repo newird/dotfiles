@@ -12,10 +12,12 @@ require("conform").setup({
     -- Use a sub-list to run only the first available formatter
     javascript = { { "prettierd", "prettier" } },
     go = { "goimports", "gofmt" },
-    cpp  = {"clang_format"},
-    c  = {"clang_format"},
+    -- google cpp style
+    cpp  = {"clang_format -style=google "},
+    c  = {"clang_format -style=google "},
     fish = {"fish_indent"},
-    ["_"] = { "trim_whitespace" , "autocorrect "},
+    rust = {"rustfmt"},
+    ["_"] = { "trim_whitespace" , "autocorrect"},
   },
 })
 

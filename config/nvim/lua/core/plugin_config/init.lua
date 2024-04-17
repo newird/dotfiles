@@ -18,5 +18,6 @@ require("core.plugin_config.debug")
 require("core.plugin_config.catppucin")
 require("core.plugin_config.autofmt")
 require("core.plugin_config.latex")
+require("core.plugin_config.competitest")
 require("core.plugin_config.lazygit")
 

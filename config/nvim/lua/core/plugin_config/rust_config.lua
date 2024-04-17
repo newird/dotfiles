@@ -2,10 +2,9 @@
 vim.g.rustaceanvim = {
   server = {
     on_attach = function(client, bufnr)
-      require("lsp-format").on_attach(client, bufnr)
       vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
-         vim.keymap.set("n", "<leader>m", function() if vim.lsp.inlay_hint.is_enabled() then vim.lsp.inlay_hint.enable(0, false) else vim.lsp.inlay_hint.enable(0, true) end end, { desc = "Toggle Inlay Hints" })
-
+      -- vim.api.nvim_set_keymap("n" , "<leader>rtb" , vim.cmd.RustLsp("testables"))
+      vim.g.rustaceanvim.tools.test_executor = true
     end,
     settings = {
       ["rust-analyzer"] = {

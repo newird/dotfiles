@@ -50,7 +50,6 @@ abbr tl tmux ls
 abbr tk tmux kill-session -t
 # rg
 abbr -a rgg rg --glob
-
 # fzf
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --color=never --hidden'
 set -gx FZF_DEFAULT_OPTS '--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
@@ -77,6 +76,7 @@ abbr -a ..... ../../../..
 # my alias
 abbr -a c clear
 abbr -a vv nvim
+abbr -a vd neovide
 abbr -a ac aicommits
 abbr -a cf clangformat
 abbr -a sf screenfetch
@@ -94,6 +94,7 @@ if command -v eza >>/dev/null
     abbr -a ll eza -la
     abbr -a ls eza -l
     abbr -a lll eza -la --icons
+    abbr -a tree eza --tree
 end
 
 # opam configuration
