@@ -15,6 +15,7 @@ local plugins = {
 	"wbthomason/packer.nvim",
 	"ellisonleao/gruvbox.nvim",
 	"rebelot/kanagawa.nvim",
+	"pteroctopus/faster.nvim",
 	{
 		"dracula/vim",
 		lazy = false,
@@ -67,11 +68,11 @@ local plugins = {
 	"junegunn/fzf.vim",
 
 	-- debugger
-	"theHamsta/nvim-dap-virtual-text",
-	{ "nvim-neotest/nvim-nio" },
 	"mfussenegger/nvim-dap",
+	"theHamsta/nvim-dap-virtual-text",
 	{ "rcarriga/nvim-dap-ui", dependencies = "mfussenegger/nvim-dap" },
-
+	{ "nvim-neotest/nvim-nio" },
+	"leoluz/nvim-dap-go",
 	-- competitive
 	{
 		"xeluxee/competitest.nvim",
@@ -82,7 +83,7 @@ local plugins = {
 		build = ":TSUpdate html",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim", -- telescope 所需
+			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 
 			"nvim-treesitter/nvim-treesitter",
@@ -129,7 +130,6 @@ local plugins = {
 	},
 
 	-- go
-	"leoluz/nvim-dap-go",
 	{
 		"ray-x/go.nvim",
 		dependencies = { -- optional packages
@@ -252,6 +252,10 @@ local plugins = {
 	"nvim-treesitter/nvim-treesitter-refactor",
 	"glepnir/lspsaga.nvim",
 	-- format
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		opts = {
@@ -266,6 +270,14 @@ local plugins = {
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,
+		},
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "<leader>-", "<cmd>Oil<cr>" },
 		},
 	},
 	{

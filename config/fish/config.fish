@@ -1,7 +1,7 @@
 if status is-interactive
     # atuin
     atuin init fish | source
-
+    zoxide init fish | source
 end
 
 # environment

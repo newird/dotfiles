@@ -2,22 +2,22 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
-		python = function(bufnr)
-			if require("conform").get_formatter_info("ruff_format", bufnr).available then
-				return { "ruff_format" }
-			else
-				return { "isort", "black" }
-			end
-		end,
+		python = { "ruff_format", "ruff_fix" },
 		-- Use a sub-list to run only the first available formatter
 		javascript = { { "prettierd", "prettier" } },
 		go = { "goimports", "gofmt" },
-		-- google cpp style
-		cpp = { "clang_format -style=google " },
-		c = { "clang_format -style=google " },
+		cpp = { "clang_format" },
+		c = { "clang_format" },
 		fish = { "fish_indent" },
+		bash = { "shfmt" },
 		rust = { "rustfmt" },
-		["_"] = { "trim_whitespace", "autocorrect" },
+		["*"] = { "trim_whitespace", "autocorrect" },
+	},
+	formatters = {
+		clang_format = {
+			command = "clang-format",
+			prepend_args = { "--fallback-style=Google" },
+		},
 	},
 })
 

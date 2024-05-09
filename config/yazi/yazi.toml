@@ -26,14 +26,12 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "linux" },
 ]
 open = [
 	{ run = 'xdg-open "$@"',                desc = "Open", for = "linux" },
 ]
 reveal = [
-	{ run = 'open -R "$1"',                          desc = "Reveal", for = "macos" },
-	{ run = 'explorer /select, "%1"', orphan = true, desc = "Reveal", for = "windows" },
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [

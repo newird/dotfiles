@@ -5,7 +5,7 @@ super + ctrl + { j, k }
     bspc node -f {next, prev}.local
 # terminal emulator
 super + Return
-  	alacritty
+    wezterm
 
 # program launcher
 super + space
