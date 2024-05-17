@@ -1,17 +1,9 @@
+local opt = vim.opt
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
--- vim.api.nvim_create_autocmd("BufWinLeave", {
---     pattern = "*",
---     callback = function()
---         if vim.fn.exists("b:changedtick") == 1 and vim.fn.filereadable(vim.fn.expand("%")) == 1 then
---             vim.cmd("silent! w")
---         end
---     end
--- })
-
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = "LspAttach_inlayhints",
@@ -45,22 +37,22 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- undo
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/vimdid"
-vim.opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.vim/vimdid"
+opt.undofile = true
 
-vim.opt.backspace = "2"
-vim.opt.showcmd = true
-vim.opt.laststatus = 2
-vim.opt.autowrite = true
-vim.opt.cursorline = true
-vim.opt.autoread = true
-vim.opt.autochdir = true
+opt.backspace = "2"
+opt.showcmd = true
+opt.laststatus = 2
+opt.autowrite = true
+opt.cursorline = true
+opt.autoread = true
+opt.autochdir = true
 -- use spaces for tabs and whatnot
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
-vim.opt.scrolloff = 8
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.shiftround = true
+opt.expandtab = true
+opt.scrolloff = 8
 
 vim.cmd([[ set noswapfile ]])
 

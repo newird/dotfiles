@@ -249,12 +249,31 @@ local plugins = {
 	},
 	"nvim-treesitter/playground",
 	"nvim-treesitter/nvim-treesitter-context",
-	"nvim-treesitter/nvim-treesitter-refactor",
 	"glepnir/lspsaga.nvim",
+	-- refactor
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("refactoring").setup()
+		end,
+	},
 	-- format
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
@@ -284,6 +303,15 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{
+		"AckslD/nvim-neoclip.lua",
+		dependencies = {
+			{ "kkharji/sqlite.lua", module = "sqlite" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		opts = {},
 	},
 }
 
