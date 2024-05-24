@@ -50,5 +50,3 @@ opt.shiftwidth = 2
 opt.shiftround = true
 opt.expandtab = true
 opt.scrolloff = 8
-
-vim.cmd([[ set noswapfile ]])

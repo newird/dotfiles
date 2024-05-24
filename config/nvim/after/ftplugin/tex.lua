@@ -1,0 +1,13 @@
+-- Ensure VimTeX is loaded
+-- if vim.fn.exists(':VimtexCompile') == 2 then
+-- vim.api.nvim_exec(
+--   [[
+--   augroup tex_autocompile
+--     autocmd!
+--     " Automatically compile .tex files with VimTeX's leader ll command after saving
+--     autocmd BufWritePost *.tex silent! execute 'VimtexCompile'
+--   augroup END
+-- ]],
+--   false
+-- )
+-- end

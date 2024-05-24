@@ -138,6 +138,7 @@ return {
         end,
       })
 
+      -- lua
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         settings = {
@@ -155,11 +156,13 @@ return {
         },
       })
 
+      -- solar
       lspconfig.solargraph.setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities(
           vim.lsp.protocol.make_client_capabilities()
         ),
       })
+      -- python
       lspconfig.pyright.setup({
         on_attach = function(client, bufnr)
           -- vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
@@ -168,6 +171,7 @@ return {
           vim.lsp.protocol.make_client_capabilities()
         ),
       })
+      -- c cpp
       lspconfig.clangd.setup({
         cmd = {
           'clangd',
@@ -180,6 +184,9 @@ return {
           vim.lsp.protocol.make_client_capabilities()
         ),
       })
+      -- gleam
+      lspconfig.gleam.setup({})
+      -- typescript
       require('typescript-tools').setup({
         on_attach = function(client, bufnr)
           -- vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
@@ -235,6 +242,7 @@ return {
       end
       local gopathmod = gopath .. '/pkg/mod'
 
+      -- go
       lspconfig.gopls.setup({
         root_dir = function(fname)
           local fullpath = vim.fn.expand(fname, ':p')

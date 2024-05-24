@@ -14,14 +14,6 @@ map('t', '<C-c>', '<Esc>')
 
 --for copilot
 
-map('i', '<C-x>', 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false,
-})
-vim.g.copilot_no_tab_map = true
-map('i', '<C-N>', '<Plug>(copilot-next)', {})
-map('i', '<C-P>', '<Plug>(copilot-previous)', {})
-
 --remove file
 map('n', '<Leader>rb', ':bdelete')
 map('n', '<Leader>rf', ':UseFZFToRemoveFiles')
@@ -73,8 +65,8 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 map('n', 'J', 'mzJ`z')
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
-map('n', 'n', 'nzzzv')
-map('n', 'N', 'Nzzzv')
+-- map('n', 'n', 'nzzzv')
+-- map('n', 'N', 'Nzzzv')
 
 map('n', '<C-s>', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
@@ -87,8 +79,8 @@ map('n', '<Leader>w', '<Esc>:w<Cr>')
 map('n', '<Leader>q', '<Esc>:q<Cr>')
 
 -- Search results centered please
-map('n', '<silent> n', 'nzz')
-map('n', '<silent> N', 'Nzz')
+map('n', '<silent> n', 'nzzzv')
+map('n', '<silent> N', 'Nzzzv')
 map('n', '<silent> *', '*zz')
 map('n', '<silent> #', '#zz')
 map('n', '<silent> g*', 'g*zz')
@@ -98,3 +90,13 @@ map('n', '<M-l>', '<c-w>5<')
 map('n', '<M-h>', '<c-w>5>')
 map('n', '<M-j>', '<C-W>+')
 map('n', '<M-k>', '<C-W>-')
+
+--fold
+local function close_all_folds()
+  vim.api.nvim_exec2('%foldc!', { output = false })
+end
+local function open_all_folds()
+  vim.api.nvim_exec2('%foldo!', { output = false })
+end
+vim.keymap.set('n', '<leader>zc', close_all_folds, { desc = '[c]lose all folds' })
+vim.keymap.set('n', '<leader>zo', open_all_folds, { desc = '[o]pen all folds' })

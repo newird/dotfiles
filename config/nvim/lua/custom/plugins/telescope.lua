@@ -12,21 +12,38 @@ M = {
             require('telescope.themes').get_dropdown(),
           },
         },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+        },
       })
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'neoclip')
-
       require('neoclip').setup({
         default_register = '+',
+        enable_persistent_history = true,
+
         keys = {
           telescope = {
             i = {
               select = { '<c-y>', '<cr>' },
-              paste = '<c-p>',
-              paste_behind = '<c-n>',
+              paste = '<cr>',
+              paste_behind = '<c-P>',
+              custom = {
+                ['<c-p>'] = function()
+                  print('p pressed')
+                  -- move to previous item by telescope
+                  require('telescope').extensions.neoclip.move()
+                end,
+              },
             },
             n = {
               select = { '<c-y>', '<cr>' },
@@ -107,48 +124,6 @@ M = {
     'folke/flash.nvim',
     event = 'VeryLazy',
     opts = {},
-    keys = {
-      {
-        's',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').jump()
-        end,
-        desc = 'Flash',
-      },
-      {
-        'S',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').treesitter()
-        end,
-        desc = 'Flash Treesitter',
-      },
-      {
-        'r',
-        mode = 'o',
-        function()
-          require('flash').remote()
-        end,
-        desc = 'Remote Flash',
-      },
-      {
-        'R',
-        mode = { 'o', 'x' },
-        function()
-          require('flash').treesitter_search()
-        end,
-        desc = 'Treesitter Search',
-      },
-      {
-        '<c-s>',
-        mode = { 'c' },
-        function()
-          require('flash').toggle()
-        end,
-        desc = 'Toggle Flash Search',
-      },
-    },
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {

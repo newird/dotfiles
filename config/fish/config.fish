@@ -3,14 +3,14 @@ if status is-interactive
     atuin init fish | source
 end
 
-# environment
-set -U fish_user_paths /home/newird/.cargo/bin $HOME/.local/bin
 ## fish t for tmux
-fish_add_path /home/newird/.deno/bin /home/newird/git/fzf-fuzzy/bin
+fish_add_path /home/newird/.cargo/bin
+fish_add_path /home/newird/.local/bin
+fish_add_path /home/newird/.deno/bin
+fish_add_path /home/newird/git/fzf-fuzzy/bin
 fish_add_path $GOPATH/bin
 set fish_key_bindings fish_vi_key_bindings
 
-# function
 # auto update
 function u
     paru
@@ -54,10 +54,10 @@ set -gx FZF_DEFAULT_COMMAND 'fd --type f --color=never --hidden'
 set -gx FZF_DEFAULT_OPTS '--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
 
 set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -gx FZF_CTRL_T_OPTS "--preview 'bat --color=always --line-range :50 {}'"
+set -gx FZF_CTRL_T_OPTS "--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
 
 set -gx FZF_ALT_C_COMMAND 'fd --type d . --color=never --hidden'
-set -gx FZF_ALT_C_OPTS "--preview 'tree -C {} | head -50'"
+set -gx FZF_ALT_C_OPTS "--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
 # git abbr
 
 abbr -a gm git commit

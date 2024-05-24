@@ -73,6 +73,7 @@ fi
 xset -b &
 xset -dpms &
 xset s off &
+fcitx5 &
 
 feh --bg-scale --no-fehbg $HOME/.config/bspwm/wal.jpg &
 $HOME/.config/polybar/launch.sh &

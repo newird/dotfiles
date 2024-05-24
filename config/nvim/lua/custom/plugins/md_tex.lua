@@ -7,10 +7,10 @@ return {
       vim.fn['mkdp#util#install']()
     end,
     keys = {
-      { 'n', '<Leader>mp', ':MarkdownPreview<CR>' },
-      { 'n', '<Leader>mc', ':MarkdownPreviewClose<CR>' },
-      { 'n', '<Leader>mr', ':MarkdownPreviewRefresh<CR>' },
-      { 'n', '<Leader>mt', ':MarkdownPreviewToggle<CR>' },
+      { '<Leader>mp', ':MarkdownPreview<CR>' },
+      { '<Leader>mc', ':MarkdownPreviewClose<CR>' },
+      { '<Leader>mr', ':MarkdownPreviewRefresh<CR>' },
+      { '<Leader>mt', ':MarkdownPreviewToggle<CR>' },
     },
   },
   --latex
