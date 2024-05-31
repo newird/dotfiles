@@ -28,6 +28,7 @@ return {
           fish = { 'fish_indent' },
           bash = { 'shfmt' },
           rust = { 'rustfmt' },
+          gleam = { 'gleam' },
           ['*'] = { 'trim_whitespace', 'autocorrect' },
         },
         formatters = {

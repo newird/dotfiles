@@ -1,6 +1,9 @@
 if status is-interactive
     # atuin
     atuin init fish | source
+    zoxide init fish | source
+    starship init fish | source
+    pixi completion --shell fish | source
 end
 
 ## fish t for tmux
@@ -9,6 +12,15 @@ fish_add_path /home/newird/.local/bin
 fish_add_path /home/newird/.deno/bin
 fish_add_path /home/newird/git/fzf-fuzzy/bin
 fish_add_path $GOPATH/bin
+fish_add_path /home/newird/.pixi/bin
+
+# opam configuration
+source /home/newird/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+fish_add_path $BUN_INSTALL/bin $PATH
+
 set fish_key_bindings fish_vi_key_bindings
 
 # auto update
@@ -43,7 +55,7 @@ abbr -a co xclip -o
 
 # tmux serssion
 abbr tn tmux new -s
-abbr tnn tmux new -s ( pwd | sed 's/.*\///g')
+abbr tnn 'tmux new -s (string replace -r "^\." "" -- (basename (string trim -r -c "/" (pwd))))'
 abbr ta tmux attach -t
 abbr tl tmux ls
 abbr tk tmux kill-session -t
@@ -66,11 +78,12 @@ abbr -a gsb git switch
 abbr -a gsu git submodule update --init --recursive
 abbr -a gc git clone
 abbr -a gcr git clone --recurse-submodules
+abbr -a gg lazygit
 
 # for cd
-abbr -a ... ../..
-abbr -a .... ../../..
-abbr -a ..... ../../../..
+abbr -a ... cd ../..
+abbr -a .... cd ../../..
+abbr -a ..... cd ../../../..
 
 # my alias
 abbr -a c clear
@@ -80,9 +93,6 @@ abbr -a ac aicommits
 abbr -a cf clangformat
 abbr -a sf screenfetch
 abbr -a gp rga
-abbr -a of onefetch
-abbr -a dg datagrip
-abbr -a ca conda activate
 abbr -a ou ouch decompress
 ## uu
 source /home/newird/.config/fish/alias/uu.fish
@@ -93,22 +103,6 @@ if command -v eza >>/dev/null
     abbr -a ll eza -la
     abbr -a ls eza -l
     abbr -a lll eza -la --icons
-    abbr -a tree eza --tree
+    abbr -a lg eza -la --icons --git
+    abbr -a lt eza -la --icons --tree --long --level=2
 end
-
-# opam configuration
-source /home/newird/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /opt/anaconda/bin/conda
-    eval /opt/anaconda/bin/conda "shell.fish" hook $argv | source
-end
-# <<< conda initialize <<<
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
-fish_add_path /home/newird/.pixi/bin
-pixi completion --shell fish | source
