@@ -19,7 +19,7 @@ return {
         formatters_by_ft = {
           lua = { 'stylua' },
           -- Conform will run multiple formatters sequentially
-          python = { 'ruff_format', 'ruff_fix' },
+          python = { 'ruff_format' },
           -- Use a sub-list to run only the first available formatter
           javascript = { { 'prettierd', 'prettier' } },
           go = { 'goimports', 'gofmt' },
@@ -29,6 +29,7 @@ return {
           bash = { 'shfmt' },
           rust = { 'rustfmt' },
           gleam = { 'gleam' },
+          json = { 'jq' },
           ['*'] = { 'trim_whitespace', 'autocorrect' },
         },
         formatters = {

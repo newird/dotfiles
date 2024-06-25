@@ -37,7 +37,35 @@ local plugins = {
   'preservim/vimux',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
-
+  -- surround
+  {
+    'kylechui/nvim-surround',
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  },
+  -- multisursor
+  {
+    'smoka7/multicursors.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'smoka7/hydra.nvim',
+    },
+    opts = {},
+    cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+    keys = {
+      {
+        mode = { 'v', 'n' },
+        '<Leader>mm',
+        '<cmd>MCstart<cr>',
+        desc = 'Create a selection for selected text or word under the cursor',
+      },
+    },
+  },
   'nvim-lua/plenary.nvim',
   -- python
   {

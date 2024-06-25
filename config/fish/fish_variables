@@ -4,7 +4,7 @@ SETUVAR CLOX_BUILD:/home/newird/code/compiler/craftinginterpreters/build
 SETUVAR CPWD:/home/newird/code/codeforce/852
 SETUVAR FISH:/home/newird/\x2econfig/fish/config\x2efish
 SETUVAR FZF_DEFAULT_COMMAND:rg\x20\x2d\x2dfiles
-SETUVAR FZF_DEFAULT_OPTS:\x2dm\x20\x2d\x2dheight\x2050\x25\x20\x2d\x2dborder
+SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dcolor\x3dbg\x2b\x3a\x23363a4f\x2cbg\x3a\x2324273a\x2cspinner\x3a\x23f4dbd6\x2chl\x3a\x23ed8796\x20\x2d\x2dcolor\x3dfg\x3a\x23cad3f5\x2cheader\x3a\x23ed8796\x2cinfo\x3a\x23c6a0f6\x2cpointer\x3a\x23f4dbd6\x20\x2d\x2dcolor\x3dmarker\x3a\x23f4dbd6\x2cfg\x2b\x3a\x23cad3f5\x2cprompt\x3a\x23c6a0f6\x2chl\x2b\x3a\x23ed8796
 SETUVAR FZF_TMUX:0
 SETUVAR --path GOPATH:/home/newird/test/test_go
 SETUVAR LC_CTYPE:en_US\x2eUTF\x2d8

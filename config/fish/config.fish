@@ -62,14 +62,20 @@ abbr tk tmux kill-session -t
 # rg
 abbr -a rgg rg --glob
 # fzf
+
+# Setting default options for FZF
+set -gx FZF_DEFAULT_OPTS '--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b --reverse --border --cycle --marker=">" --preview="bat {}" '
+
+# Setting default command for FZF
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --color=never --hidden'
-set -gx FZF_DEFAULT_OPTS '--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
 
+# Setting FZF options for CTRL+T
 set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -gx FZF_CTRL_T_OPTS "--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
+set -gx FZF_CTRL_T_OPTS "--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b --reverse --border --cycle --marker='>' --preview='bat --style=plain --color=always {}' --bind='ctrl-v:execute(nvim {})'"
 
+# Setting FZF options for ALT+C
 set -gx FZF_ALT_C_COMMAND 'fd --type d . --color=never --hidden'
-set -gx FZF_ALT_C_OPTS "--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b"
+set -gx FZF_ALT_C_OPTS "--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b --reverse --border --cycle --marker='>' --preview='eza -l --icons --tree --level=2 {}' "
 # git abbr
 
 abbr -a gm git commit
