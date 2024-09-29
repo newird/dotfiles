@@ -21,6 +21,16 @@ return {
   -- Useful status updates for LSP.
   -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
   { 'j-hui/fidget.nvim', opts = {} },
+  -- inlay hint
+
+  {
+    'MysticalDevil/inlay-hints.nvim',
+    event = 'LspAttach',
+    dependencies = { 'neovim/nvim-lspconfig' },
+    config = function()
+      require('inlay-hints').setup()
+    end,
+  },
   {
     'glepnir/lspsaga.nvim',
     config = function()

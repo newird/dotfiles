@@ -7,21 +7,22 @@ if status is-interactive
 end
 
 ## fish t for tmux
-fish_add_path /home/newird/.cargo/bin
-fish_add_path /home/newird/.local/bin
-fish_add_path /home/newird/.deno/bin
-fish_add_path /home/newird/git/fzf-fuzzy/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.deno/bin
+fish_add_path $HOME/git/fzf-fuzzy/bin
 fish_add_path $GOPATH/bin
-fish_add_path /home/newird/.pixi/bin
-
+fish_add_path $HOME/.pixi/bin
+fish_add_path $HOME/.bun/bin
 # opam configuration
-source /home/newird/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
+source $HOME/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-fish_add_path $BUN_INSTALL/bin $PATH
 
 set fish_key_bindings fish_vi_key_bindings
+bind yy fish_clipboard_copy
+bind Y fish_clipboard_copy
+bind p fish_clipboard_paste
 
 # auto update
 function u
@@ -52,6 +53,9 @@ abbr -a recover rip --seance --unbury
 # set  system clipboard
 abbr -a clip xclip -sel clip
 abbr -a co xclip -o
+
+# download
+abbr -a ww aria2c
 
 # tmux serssion
 abbr tn tmux new -s

@@ -149,7 +149,7 @@ super + shift + b
 	opdrofi
 
 super + shift + m
-		firefox
+  firefox-developer-edition
 super + v
 	rofi run --show
 super + ctrl + b
