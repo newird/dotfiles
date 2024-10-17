@@ -22,7 +22,6 @@ return {
   -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
   { 'j-hui/fidget.nvim', opts = {} },
   -- inlay hint
-
   {
     'MysticalDevil/inlay-hints.nvim',
     event = 'LspAttach',
@@ -166,6 +165,28 @@ return {
         },
       })
 
+      -- frontend
+      lspconfig.biome.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(
+          vim.lsp.protocol.make_client_capabilities()
+        ),
+        cmd = { 'biome', 'lsp-proxy' },
+        filetypes = {
+          'javascript',
+          'javascriptreact',
+          'json',
+          'jsonc',
+          'typescript',
+          'typescript.tsx',
+          'typescriptreact',
+          'astro',
+          'svelte',
+          'vue',
+          'css',
+        },
+        root_dir = util.root_pattern('biome.json', 'biome.jsonc'),
+        single_file_support = false,
+      })
       -- solar
       lspconfig.solargraph.setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities(
@@ -174,9 +195,6 @@ return {
       })
       -- python
       lspconfig.pyright.setup({
-        on_attach = function(client, bufnr)
-          -- vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
-        end,
         capabilities = require('cmp_nvim_lsp').default_capabilities(
           vim.lsp.protocol.make_client_capabilities()
         ),
@@ -187,9 +205,12 @@ return {
           'clangd',
           '--offset-encoding=utf-16',
         },
-        on_attach = function(client, bufnr)
-          -- vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
-        end,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(
+          vim.lsp.protocol.make_client_capabilities()
+        ),
+      })
+      -- asm
+      lspconfig.asm_lsp.setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities(
           vim.lsp.protocol.make_client_capabilities()
         ),

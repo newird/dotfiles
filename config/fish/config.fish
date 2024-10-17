@@ -44,11 +44,13 @@ if command -v bat >/dev/null 2>&1
     abbr -a ss bat
 end
 # safe rm
-abbr -a rm rip
-abbr -a clean_trash rip --decompose
-abbr -a rm_list rip --seance
-abbr -a cz rip --unbury
-abbr -a recover rip --seance --unbury
+if command -v rip >/dev/null 2>&1
+    abbr -a rm rip
+    abbr -a clean_trash rip --decompose
+    abbr -a rm_list rip --seance
+    abbr -a cz rip --unbury
+    abbr -a recover rip --seance --unbury
+end
 
 # set  system clipboard
 abbr -a clip xclip -sel clip
@@ -60,9 +62,7 @@ abbr -a ww aria2c
 # tmux serssion
 abbr tn tmux new -s
 abbr tnn 'tmux new -s (string replace -r "^\." "" -- (basename (string trim -r -c "/" (pwd))))'
-abbr ta tmux attach -t
 abbr tl tmux ls
-abbr tk tmux kill-session -t
 # rg
 abbr -a rgg rg --glob
 # fzf
@@ -99,7 +99,7 @@ abbr -a sf screenfetch
 abbr -a gp rga
 abbr -a ou ouch decompress
 ## uu
-source /home/newird/.config/fish/alias/uu.fish
+source $HOME/.config/fish/alias/uu.fish
 #eza
 if command -v eza >>/dev/null
     abbr -a l eza

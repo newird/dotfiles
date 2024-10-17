@@ -15,7 +15,6 @@ SETUVAR OPENAI_API_KEY:sk\x2dC2qv1N4fdA1bkixoXUksT3BlbkFJavHw1VsUOhNbmX1E1msI
 SETUVAR --path PATH:/home/newird/\x2ecargo/bin\x1e/home/newird/\x2elocal/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/rustup/bin\x1e/home/newird/\x2edeno/bin\x1e/home/newird/\x2edeno/bin
 SETUVAR PRIMARY_MONITOR:DP\x2d2
 SETUVAR --export PYENV_ROOT:/home/newird/\x2epyenv
-SETUVAR SHELL:/usr/bin/fish
 SETUVAR SXHKD_SHELL:sh
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
@@ -73,5 +72,4 @@ SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_paths:/home/newird/\x2ecargo/bin\x1e/home/newird/\x2elocal/bin
 SETUVAR no_proxy:localhost
-SETUVAR nvm_data:/home/newird/\x2elocal/share/nvm
-SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist
+

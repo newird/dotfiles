@@ -6,7 +6,7 @@ return {
       require('competitest').setup {
         vim.api.nvim_set_keymap(
           'n',
-          '<leader>cat',
+          '<leader>cdt',
           ':CompetiTest add_testcase<CR>',
           { noremap = true, silent = true }
         ),

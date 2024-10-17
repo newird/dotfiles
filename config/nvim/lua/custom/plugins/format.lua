@@ -19,32 +19,43 @@ return {
         formatters_by_ft = {
           lua = { 'stylua' },
           -- Conform will run multiple formatters sequentially
-          python = { 'ruff_format', 'ruff_fix' },
+          python = { 'ruff_format' },
           -- Use a sub-list to run only the first available formatter
           javascript = { { 'prettierd', 'prettier' } },
           go = { 'goimports', 'gofmt' },
           cpp = { 'clang_format' },
           c = { 'clang_format' },
           fish = { 'fish_indent' },
+          asm = { 'asmfmt' },
+          bib = { 'bibtext-tidy' },
+          latex = { 'llf' },
+          json = { 'jq' },
+          just = { 'just' },
           bash = { 'shfmt' },
           rust = { 'rustfmt' },
           gleam = { 'gleam' },
+          md = { 'markdownlint' },
           ['*'] = { 'trim_whitespace', 'autocorrect' },
         },
         formatters = {
           clang_format = {
-            command = 'clang-format',
+            command = '/usr/local/bin/clang-format',
             prepend_args = { '--fallback-style=Google' },
           },
         },
+        format_on_save = {
+          -- I recommend these options. See :help conform.format for details.
+          lsp_format = 'fallback',
+          timeout_ms = 500,
+        },
       })
 
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = '*',
-        callback = function(args)
-          require('conform').format({ bufnr = args.buf })
-        end,
-      })
+      -- vim.api.nvim_create_autocmd('BufWritePre', {
+      --   pattern = '*',
+      --   callback = function(args)
+      --     require('conform').format({ bufnr = args.buf })
+      --   end,
+      -- })
 
       -- Key mapping for formatting
       vim.api.nvim_set_keymap(
@@ -56,3 +67,4 @@ return {
     end,
   },
 }
+
