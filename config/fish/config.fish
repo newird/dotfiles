@@ -39,6 +39,10 @@ abbr -a pp paruz
 
 #locale us
 set -gx LC_CTYPE en_US.UTF-8
+# editor
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
 
 if command -v bat >/dev/null 2>&1
     abbr -a ss bat
@@ -92,12 +96,11 @@ abbr -a ..... cd ../../../..
 # my alias
 abbr -a c clear
 abbr -a vv nvim
-abbr -a vd neovide
-abbr -a ac aicommits
-abbr -a cf clangformat
-abbr -a sf screenfetch
-abbr -a gp rga
+abbr -a vd neovide &
+abbr -a cf clang-format
+abbr -a sf fastfetch
 abbr -a ou ouch decompress
+abbr -a pxy proxychains
 ## uu
 source $HOME/.config/fish/alias/uu.fish
 #eza
@@ -110,3 +113,4 @@ if command -v eza >>/dev/null
     abbr -a lg eza -la --icons --git
     abbr -a lt eza -la --icons --tree --long --level=2
 end
+
