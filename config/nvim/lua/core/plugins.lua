@@ -28,8 +28,6 @@ local plugins = {
   },
   { dir = '/home/newird/lession/cs6120/bril/bril-vim' },
   { 'folke/neodev.nvim', opts = {} },
-  'nvim-lualine/lualine.nvim',
-  'vim-test/vim-test',
   {
     'lewis6991/gitsigns.nvim',
     opts = {},
@@ -72,3 +70,4 @@ local plugins = {
 local opts = {}
 
 require('lazy').setup(plugins, opts)
+

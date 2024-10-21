@@ -72,7 +72,8 @@ map('n', '<C-s>', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 -- fzf
 map('n', '<Leader>f', '<Esc>:Files<Cr>')
-map('n', '<Leader>g', '<Esc>:GFiles<Cr>')
+map('n', '<Leader>gf', '<Esc>:GFiles<Cr>')
+map('n', '<Leader>cw', '<Esc>:Windows<Cr>')
 map('n', '<C-f>', ':Rg!<Cr> ')
 --save
 map('n', '<Leader>w', '<Esc>:w<Cr>')
@@ -100,3 +101,4 @@ local function open_all_folds()
 end
 vim.keymap.set('n', '<leader>zc', close_all_folds, { desc = '[c]lose all folds' })
 vim.keymap.set('n', '<leader>zo', open_all_folds, { desc = '[o]pen all folds' })
+

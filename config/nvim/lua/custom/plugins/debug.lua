@@ -96,10 +96,6 @@ return {
         vim.fn.sign_define(group, { text = '●', texthl = group })
       end
 
-      -- Setup DAP
-      -- require('dap').defaults.fallback.switchbuf = 'useopen,usetab'
-      -- require('dap').defaults.fallback.open_command = 'edit' -- 添加这一行
-
       -- Adapters
       -- C, C++, Rust
       require('custom.plugins.dap.corelldb')
