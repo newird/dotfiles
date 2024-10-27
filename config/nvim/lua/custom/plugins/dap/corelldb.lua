@@ -37,5 +37,35 @@ dap.configurations.cpp = {
 }
 
 dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
+dap.configurations.rust = {
+  {
+    name = 'Launch Rust file without  args',
+    type = 'codelldb',
+    request = 'launch',
+    program = function()
+      local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+      return vim.fn.getcwd() .. '/target/debug/' .. project_name
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+  {
+    name = 'Launch Rust file with args',
+    type = 'codelldb',
+    request = 'launch',
+    program = function()
+      local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+      return vim.fn.getcwd() .. '/target/debug/' .. project_name
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = function()
+      local input = vim.fn.input('Program arguments : ')
+      return vim.split(input, ' ')
+    end,
+    runInTerminal = false,
+  },
+}
 
