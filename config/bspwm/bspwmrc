@@ -84,13 +84,15 @@ bspc rule -a maim  state=floating
 bspc rule -a peek sticky=on state=fullscreen
 bspc rule -a mupdf  state=floating
 bspc rule -a neovide desktop=^2
-bspc config border_width        0
-#bspc config focused_border_color "#444b6a"
-#bspc config normal_border_color  "#32344a"
-#bspc config active_border_color  "#444b6a"
+bspc config border_width        2
+bspc config focused_border_color "#44ff6a"
+bspc config normal_border_color  "#32344a"
+bspc config active_border_color  "#44ff6a"
 bspc config window_gap          20
 bspc config top_padding         30
 
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+
+
