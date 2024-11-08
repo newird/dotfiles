@@ -1,11 +1,11 @@
-#
+
 # wm independent hotkeys
 #
 super + ctrl + { j, k }
     bspc node -f {next, prev}.local
 # terminal emulator
 super + Return
-    wezterm
+    kitty
 
 # program launcher
 super + space
@@ -48,6 +48,8 @@ super + y
 super + g
 	bspc node -s biggest.window
 
+suprt + r
+  pkill -USR1 -x sxhkd
 #
 # state/flags
 #
@@ -62,7 +64,7 @@ super + ctrl + {m,x,y,z}
 
 #
 # focus/swap
-#
+`
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -130,8 +132,8 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
-
+# move windows by lefr mouse
+# Hold super and drag to move a floating window
 
 # My Hotkeys
 # screenshot
@@ -149,8 +151,13 @@ super + shift + b
 
 super + shift + m
   firefox-developer-edition
-super + v
-	rofi run --show
+
+super + shift + n
+  telegram-desktop
+
+super + shift + z
+  zotero
+
 super + ctrl + b
        blt
 super + shift + p
@@ -169,7 +176,13 @@ super + shift + u
 		reboot
 shift + alt + b
 	brgtindic
-#super + shift + 3
-#	light -U 3
+
+
+
+
+
+
+
+
 
 
