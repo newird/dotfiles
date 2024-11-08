@@ -58,7 +58,7 @@ return {
       -- })
 
       -- Key mapping for formatting
-      vim.api.nvim_set_keymap(
+      vim.keymap.set(
         'n', -- Use an empty string for mode to set the keymap for all modes
         '<leader>=', -- The key combination
         ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>", -- The command to execute

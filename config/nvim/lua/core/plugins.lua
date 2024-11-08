@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   { import = 'custom/plugins' },
+
   'wbthomason/packer.nvim',
   'ellisonleao/gruvbox.nvim',
   'rebelot/kanagawa.nvim',
@@ -34,7 +35,6 @@ local plugins = {
   },
   'preservim/vimux',
   'tpope/vim-fugitive',
-  'tpope/vim-commentary',
 
   'nvim-lua/plenary.nvim',
 
@@ -61,10 +61,7 @@ local plugins = {
     ft = { 'go', 'gomod' },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
-  --image preview
   { 'edluffy/hologram.nvim' },
-  -- markdown
-  -- terminal
 }
 
 local opts = {}

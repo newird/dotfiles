@@ -168,6 +168,7 @@ return {
   },
   {
     'kawre/leetcode.nvim',
+    branch = 'disable-x-requested-with-header',
     build = ':TSUpdate html',
     dependencies = {
       'nvim-telescope/telescope.nvim',
@@ -178,6 +179,10 @@ return {
       'rcarriga/nvim-notify',
       'nvim-tree/nvim-web-devicons',
     },
-    opts = {},
+    opts = {
+      ---@type boolean
+      image_support = true,
+    },
   },
 }
+

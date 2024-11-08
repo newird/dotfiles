@@ -15,13 +15,13 @@ return {
     event = 'VeryLazy',
     keys = {
       {
-        '<leader>yy',
+        '<leader>-',
         '<cmd>Yazi<cr>',
         desc = 'Open yazi at the current file',
       },
       {
         -- Open in the current working directory
-        '<leader>cd',
+        '<leader>cwd',
         '<cmd>Yazi cwd<cr>',
         desc = "Open the file manager in nvim's working directory",
       },
@@ -42,16 +42,6 @@ return {
       },
     },
   },
-  -- file
-  {
-    'stevearc/oil.nvim',
-    opts = {},
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    keys = {
-      { '<leader>-', '<cmd>Oil<cr>' },
-    },
-  },
-  -- tmux and vim
   {
     'christoomey/vim-tmux-navigator',
     cmd = {

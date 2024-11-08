@@ -13,7 +13,6 @@ map('l', '<C-c>', '<Esc>')
 map('t', '<C-c>', '<Esc>')
 
 --for copilot
-
 --remove file
 map('n', '<Leader>rb', ':bdelete')
 map('n', '<Leader>rf', ':UseFZFToRemoveFiles')
@@ -73,7 +72,6 @@ map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 -- fzf
 map('n', '<Leader>f', '<Esc>:Files<Cr>')
 map('n', '<Leader>gf', '<Esc>:GFiles<Cr>')
-map('n', '<Leader>cw', '<Esc>:Windows<Cr>')
 map('n', '<C-f>', ':Rg!<Cr> ')
 --save
 map('n', '<Leader>w', '<Esc>:w<Cr>')
@@ -87,8 +85,8 @@ map('n', '<silent> #', '#zz')
 map('n', '<silent> g*', 'g*zz')
 
 -- resize windows
-map('n', '<M-l>', '<c-w>5<')
-map('n', '<M-h>', '<c-w>5>')
+map('n', '<M-l>', '<c-w>5>')
+map('n', '<M-h>', '<c-w>5<')
 map('n', '<M-j>', '<C-W>+')
 map('n', '<M-k>', '<C-W>-')
 

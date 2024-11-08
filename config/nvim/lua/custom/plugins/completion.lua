@@ -143,23 +143,23 @@ return {
   --     },
   --   },
   -- },
-  {
-    'github/copilot.vim',
-    config = function()
-      vim.cmd [[highlight CopilotSuggestion ctermfg=8 guifg=white guibg=#5c6370]]
-
-      vim.keymap.set('i', '<C-x>', 'copilot#Accept("\\<CR>")', {
-        expr = true,
-        replace_keycodes = false,
-        silent = true,
-      })
-      vim.g.copilot_no_tab_map = true
-      vim.keymap.set('i', '<C-N>', '<Plug>(copilot-next)', {
-        silent = true,
-      })
-      vim.keymap.set('i', '<C-P>', '<Plug>(copilot-previous)', {})
-    end,
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   config = function()
+  --     vim.cmd [[highlight CopilotSuggestion ctermfg=8 guifg=white guibg=#5c6370]]
+  --
+  --     vim.keymap.set('i', '<C-x>', 'copilot#Accept("\\<CR>")', {
+  --       expr = true,
+  --       replace_keycodes = false,
+  --       silent = true,
+  --     })
+  --     vim.g.copilot_no_tab_map = true
+  --     vim.keymap.set('i', '<C-N>', '<Plug>(copilot-next)', {
+  --       silent = true,
+  --     })
+  --     vim.keymap.set('i', '<C-P>', '<Plug>(copilot-previous)', {})
+  --   end,
+  -- },
 
   -- local luasnip = require("luasnip")
   -- luasnip.config.setup({})

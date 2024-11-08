@@ -34,12 +34,27 @@ dap.configurations.cpp = {
     args = {},
     runInTerminal = false,
   },
+  {
+    name = 'Launch file with args',
+    type = 'codelldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = function()
+      local input = vim.fn.input('Program arguments : ')
+      return vim.split(input, ' ')
+    end,
+    runInTerminal = false,
+  },
 }
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = {
   {
-    name = 'Launch Rust file without  args',
+    name = 'Launch Rust file without args',
     type = 'codelldb',
     request = 'launch',
     program = function()
