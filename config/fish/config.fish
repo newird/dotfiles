@@ -42,7 +42,9 @@ set -gx LC_CTYPE en_US.UTF-8
 # editor
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-
+# for neovide since it's no-fork for now
+# https://github.com/neovide/neovide/issues/2597
+set -gx NEOVIDE_FORK 1
 
 if command -v bat >/dev/null 2>&1
     abbr -a ss bat
@@ -63,6 +65,8 @@ abbr -a co xclip -o
 # download
 abbr -a ww aria2c
 
+# ssh
+#abbr -a ssh kitten ssh
 # tmux serssion
 abbr tn tmux new -s
 abbr tnn 'tmux new -s (string replace -r "^\." "" -- (basename (string trim -r -c "/" (pwd))))'
@@ -114,3 +118,4 @@ if command -v eza >>/dev/null
     abbr -a lt eza -la --icons --tree --long --level=2
 end
 
+fish_add_path /home/newird/.pixi/bin
