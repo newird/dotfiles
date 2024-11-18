@@ -35,7 +35,7 @@ return {
           rust = { 'rustfmt' },
           gleam = { 'gleam' },
           md = { 'markdownlint' },
-          ['*'] = { 'trim_whitespace', 'autocorrect' },
+          ['*'] = { 'trim_whitespace' },
         },
         formatters = {
           clang_format = {

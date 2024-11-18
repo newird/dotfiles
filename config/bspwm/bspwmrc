@@ -80,15 +80,26 @@ $HOME/.config/polybar/launch.sh &
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+
 bspc rule -a maim  state=floating
 bspc rule -a peek sticky=on state=fullscreen
 bspc rule -a mupdf  state=floating
 bspc rule -a neovide desktop=^2
 bspc rule -a firefox-developer-edition desktop=^3
-bspc rule -a zotero desktop=^8
+bspc rule -a firefox desktop=^3
+bspc rule -a Zotero desktop=^8
 bspc rule -a vlc desktop=^9
-bspc rule -a telegram-desktop desktop=^0
-bspc rule -a rustdesk desktop=^0
+bspc rule -a telegram-desktop desktop=^6
+bspc rule -a rustdesk desktop=^6
+
+# Multihead behavior
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
+# Focusing behavior
+bspc config focus_follows_pointer false
+bspc config history_aware_focus true
+bspc config focus_by_distance true
 
 bspc config border_width        2
 bspc config pointer_modifier mod4
@@ -106,11 +117,4 @@ bspc config top_padding         30
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-
-
-
-
-
-
-
 

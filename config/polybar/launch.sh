@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
-killall -q polybar
 
-echo "---" | tee -a /tmp/polybar1.log
-polybar top >> /tmp/polybar1.log 2>&1 &
+killall polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# Count the number of connected screens using xrandr
-connected_screens=$(xrandr --query | grep ' connected' | wc -l)
+CONFIG_DIR=$(dirname $0)/config.ini
+polybar main -c $CONFIG_DIR &
 
-# If we have more than one screen connected, run polybar external
-if (( connected_screens > 1 )); then
-    polybar external >> /tmp/polybar2.log 2>&1 &
-fi
 
-echo "Bars launched..."
+
+
 

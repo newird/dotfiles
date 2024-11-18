@@ -8,6 +8,23 @@ return {
     'stevearc/dressing.nvim',
     opts = {},
   },
+  -- Oil
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      vim.keymap.set('n', '<leader>mf', '<CMD>Oil<CR>', { desc = 'Open parent directory' }),
+      keymaps = {
+        ['l'] = 'actions.select',
+        ['h'] = 'actions.parent',
+        ['q'] = 'actions.close',
+      },
+    },
+    -- Optional dependencies
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
   ---@type LazySpec
   --- yazi
   {

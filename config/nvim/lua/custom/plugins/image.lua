@@ -8,25 +8,12 @@ else
       dependencies = {
         {
           'leafo/magick',
-          {
-            'vhyrro/luarocks.nvim',
-            opts = {
-              rocks = {
-                hererocks = true,
-              },
-            },
-          },
+          'vhyrro/luarocks.nvim',
           'nvim-treesitter/nvim-treesitter',
-          build = ':TSUpdate',
-          config = function()
-            require('nvim-treesitter.configs').setup({
-              ensure_installed = { 'markdown' },
-              highlight = { enable = true },
-            })
-          end,
         },
       },
       opts = {
+
         backend = 'kitty',
         integrations = {
           markdown = {

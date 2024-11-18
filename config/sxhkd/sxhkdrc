@@ -13,18 +13,16 @@ super + space
 # rofi wifi menu
 super + w
   rofi-wifi-menu
-# rofi bluetooth menu
 super + b
   rofi-bluetooth
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
+
+super + e
+  rofi -show emoji
 
 #
 # bspwm hotkeys
 #
-super + e : {h,j,k,l}
-    bspwm_resize expand {west,south,north,east} 50
+
 
 super + shift + e : {h,j,k,l}
     bspwm_resize contract {west,south,north,east} 50
@@ -48,8 +46,8 @@ super + y
 super + g
 	bspc node -s biggest.window
 
-suprt + r
-  pkill -USR1 -x sxhkd
+super + r
+  pkill -USR1 -x sxhkd && bspwm wm -r
 #
 # state/flags
 #
@@ -138,10 +136,10 @@ super + {Left,Down,Up,Right}
 # My Hotkeys
 # screenshot
 super + shift + s
-	maim -o --select | tee ~/pix/ss/$(date +%Y%m%d%H%M%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
+	maim -o --select | tee ~/pix/ss/$(date +%Y%m%d%H%M%S).jpg | xclip -sel c -t image/png && notify-send "📁 Screenshot saved"
 
 super + shift + p
-	maim | tee ~/pix/ss/$(date +%Y%m%d%H%M%S).jpg | xclip -sel c -t image/jpg && notify-send "📁 Screenshot saved"
+	maim | tee ~/pix/ss/$(date +%Y%m%d%H%M%S).jpg | xclip -sel c -t image/png && notify-send "📁 Screenshot saved"
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	pamixer -{i,d,t} 5; kill -34 $(cat ~/.cache/pidofbar)
@@ -150,7 +148,7 @@ super + shift + b
 	opdrofi
 
 super + shift + m
-  firefox-developer-edition
+  firefox
 
 super + shift + n
   telegram-desktop
@@ -176,8 +174,6 @@ super + shift + u
 		reboot
 shift + alt + b
 	brgtindic
-
-
 
 
 
