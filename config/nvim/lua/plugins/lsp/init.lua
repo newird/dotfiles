@@ -112,6 +112,67 @@ return {
           -- end,
           -- Specify * to use this function as a fallback for any server
           -- ["*"] = function(server, opts) end,
+          --  Biome
+          biome = function(_, opts)
+            opts.cmd = { "biome", "lsp-proxy" }
+            opts.filetypes = {
+              "javascript",
+              "javascriptreact",
+              "json",
+              "jsonc",
+              "typescript",
+              "typescript.tsx",
+              "typescriptreact",
+              "astro",
+              "svelte",
+              "vue",
+              "css",
+            }
+            opts.root_dir = require("lspconfig.util").root_pattern("biome.json", "biome.jsonc")
+            opts.single_file_support = false
+          end,
+
+          -- Solargraph（Ruby）
+          solargraph = function(_, opts) end,
+
+          -- Pyright（Python）
+          pyright = function(_, opts) end,
+
+          -- Clangd（C/C++）
+          clangd = function(_, opts)
+            opts.cmd = { "clangd", "--offset-encoding=utf-16" }
+          end,
+          -- ASM
+          asm_lsp = function(_, opts) end,
+
+          -- Gleam
+          gleam = function(_, opts) end,
+
+          -- Gopls（Go）
+          gopls = function(_, opts)
+            local lastRootPath = nil
+            local gopath = os.getenv("GOPATH") or ""
+            local gopathmod = gopath .. "/pkg/mod"
+            local util = require("lspconfig.util")
+
+            opts.root_dir = function(fname)
+              local fullpath = vim.fn.expand(fname, ":p")
+              if string.find(fullpath, gopathmod) and lastRootPath ~= nil then
+                return lastRootPath
+              end
+              lastRootPath = util.root_pattern("go.mod", ".git")(fname)
+              return lastRootPath
+            end
+            opts.settings = {
+              gopls = {
+                analyses = {
+                  unusedparams = true,
+                },
+                staticcheck = true,
+                gofumpt = true,
+              },
+            }
+          end,
         },
       }
       return ret

@@ -1,14 +1,14 @@
 -- Some extras need to be loaded before others
 local prios = {
-  ["lazyvim.plugins.extras.test.core"] = 1,
-  ["lazyvim.plugins.extras.dap.core"] = 1,
-  ["lazyvim.plugins.extras.ui.edgy"] = 2,
-  ["lazyvim.plugins.extras.lang.typescript"] = 5,
-  ["lazyvim.plugins.extras.coding.blink"] = 5,
-  ["lazyvim.plugins.extras.formatting.prettier"] = 10,
+  ["plugins.extras.test.core"] = 1,
+  ["plugins.extras.dap.core"] = 1,
+  ["plugins.extras.ui.edgy"] = 2,
+  ["plugins.extras.lang.typescript"] = 5,
+  ["plugins.extras.coding.blink"] = 5,
+  ["plugins.extras.formatting.prettier"] = 10,
   -- default priority is 50
-  ["lazyvim.plugins.extras.editor.aerial"] = 100,
-  ["lazyvim.plugins.extras.editor.outline"] = 100,
+  ["plugins.extras.editor.aerial"] = 100,
+  ["plugins.extras.editor.outline"] = 100,
 }
 
 if vim.g.xtras_prios then
@@ -17,10 +17,8 @@ end
 
 ---@type string[]
 local extras = LazyVim.dedup(LazyVim.config.json.data.extras)
-
 local version = vim.version()
 local v = version.major .. "_" .. version.minor
-
 local compat = { "0_9" }
 
 LazyVim.plugin.save_core()

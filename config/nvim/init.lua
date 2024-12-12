@@ -1,10 +1,2 @@
-vim.uv = vim.uv or vim.loop
-
-local M = {}
-
----@param opts? LazyVimConfig
-function M.setup(opts)
-  require("config.lazy").setup(opts)
-end
-
-return M
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

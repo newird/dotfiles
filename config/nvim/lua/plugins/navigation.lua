@@ -1,89 +1,77 @@
 return {
-  --fzf
-  'airblade/vim-rooter',
-  { 'junegunn/fzf', dir = '~/.fzf', name = 'fzf', build = './install --all' },
-  'junegunn/fzf.vim',
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-  {
-    'stevearc/dressing.nvim',
-    opts = {},
-  },
+
   -- Oil
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
-      vim.keymap.set('n', '<leader>mf', '<CMD>Oil<CR>', { desc = 'Open parent directory' }),
+      vim.keymap.set("n", "<leader>fm", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
       keymaps = {
-        ['l'] = 'actions.select',
-        ['h'] = 'actions.parent',
-        ['q'] = 'actions.close',
+        ["l"] = "actions.select",
+        ["h"] = "actions.parent",
+        ["q"] = "actions.close",
       },
     },
     -- Optional dependencies
-    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
   ---@type LazySpec
   --- yazi
   {
-    'mikavilpas/yazi.nvim',
-    event = 'VeryLazy',
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
     keys = {
       {
-        '<leader>-',
-        '<cmd>Yazi<cr>',
-        desc = 'Open yazi at the current file',
+        -- Open in the current working directory
+        "<leader>cwd",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
       },
       {
-        -- Open in the current working directory
-        '<leader>cwd',
-        '<cmd>Yazi cwd<cr>',
-        desc = "Open the file manager in nvim's working directory",
+        "<leader>yy",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
       },
       {
         -- NOTE: this requires a version of yazi that includes
         -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-        '<c-up>',
-        '<cmd>Yazi toggle<cr>',
-        desc = 'Resume the last yazi session',
+        "<c-up>",
+        "<cmd>Yazi toggle<cr>",
+        desc = "Resume the last yazi session",
       },
     },
     ---@type YaziConfig
     opts = {
-      -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
-      keymaps = {
-        show_help = '<leader>yy',
-      },
+      open_for_directories = true,
     },
   },
   {
-    'christoomey/vim-tmux-navigator',
+    "christoomey/vim-tmux-navigator",
     cmd = {
-      'TmuxNavigateLeft',
-      'TmuxNavigateDown',
-      'TmuxNavigateUp',
-      'TmuxNavigateRight',
-      'TmuxNavigatePrevious',
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
     },
     keys = {
-      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
-      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
-      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
-      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
-      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
   -- windows
   {
-    's1n7ax/nvim-window-picker',
-    name = 'window-picker',
-    event = 'VeryLazy',
-    version = '2.*',
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    event = "VeryLazy",
+    version = "2.*",
     config = function()
-      local picker = require 'window-picker'
+      local picker = require("window-picker")
       picker.setup({
         -- type of hints you want to get
         -- following types are supported
@@ -91,11 +79,11 @@ return {
         -- 'statusline-winbar' draw on 'statusline' if possible, if not 'winbar' will be
         -- 'floating-big-letter' draw big letter on a floating window
         -- used
-        hint = 'floating-big-letter',
+        hint = "floating-big-letter",
 
         -- when you go to window selection mode, status bar will show one of
         -- following letters on them so you can use that letter to select the window
-        selection_chars = 'FJDKSLA;CMRUEIWOQP',
+        selection_chars = "FJDKSLA;CMRUEIWOQP",
 
         -- This section contains picker specific configurations
         picker_config = {
@@ -104,14 +92,14 @@ return {
             -- It supports '%' printf style. Such as `return char .. ': %f'` to display
             -- buffer file path. See :h 'stl' for details.
             selection_display = function(char, windowid)
-              return '%=' .. char .. '%='
+              return "%=" .. char .. "%="
             end,
 
             -- whether you want to use winbar instead of the statusline
             -- "always" means to always use winbar,
             -- "never" means to never use winbar
             -- "smart" means to use winbar if cmdheight=0 and statusline if cmdheight > 0
-            use_winbar = 'never', -- "always" | "never" | "smart"
+            use_winbar = "never", -- "always" | "never" | "smart"
           },
 
           floating_big_letter = {
@@ -120,7 +108,7 @@ return {
             -- additionally, user can pass in a table of fonts in to font
             -- property to use instead
 
-            font = 'ansi-shadow', -- ansi-shadow |
+            font = "ansi-shadow", -- ansi-shadow |
           },
         },
 
@@ -128,7 +116,7 @@ return {
         show_prompt = true,
 
         -- prompt message to show to get the user input
-        prompt_message = 'Pick window: ',
+        prompt_message = "Pick window: ",
 
         -- if you want to manually filter out the windows, pass in a function that
         -- takes two parameters. You should return window ids that should be
@@ -156,10 +144,10 @@ return {
           -- filter using buffer options
           bo = {
             -- if the file type is one of following, the window will be ignored
-            filetype = { 'NvimTree', 'neo-tree', 'notify' },
+            filetype = { "NvimTree", "neo-tree", "notify" },
 
             -- if the file type is one of following, the window will be ignored
-            buftype = { 'terminal' },
+            buftype = { "terminal" },
           },
 
           -- filter using window options
@@ -179,25 +167,25 @@ return {
         highlights = {
           statusline = {
             focused = {
-              fg = '#ededed',
-              bg = '#e35e4f',
+              fg = "#ededed",
+              bg = "#e35e4f",
               bold = true,
             },
             unfocused = {
-              fg = '#ededed',
-              bg = '#44cc41',
+              fg = "#ededed",
+              bg = "#44cc41",
               bold = true,
             },
           },
           winbar = {
             focused = {
-              fg = '#ededed',
-              bg = '#e35e4f',
+              fg = "#ededed",
+              bg = "#e35e4f",
               bold = true,
             },
             unfocused = {
-              fg = '#ededed',
-              bg = '#44cc41',
+              fg = "#ededed",
+              bg = "#44cc41",
               bold = true,
             },
           },
@@ -208,8 +196,7 @@ return {
         vim.api.nvim_set_current_win(window)
       end
 
-      vim.keymap.set('n', '<leader><leader>w', focus_window)
+      vim.keymap.set("n", "<leader><leader>w", focus_window)
     end,
   },
 }
-

@@ -8,11 +8,6 @@ local enabled = {
   "flit.nvim",
   "lazy.nvim",
   "leap.nvim",
-  "mini.ai",
-  "mini.comment",
-  "mini.move",
-  "mini.pairs",
-  "mini.surround",
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
   "nvim-ts-context-commentstring",
@@ -33,7 +28,6 @@ end
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimKeymapsDefaults",
   callback = function()
-    vim.keymap.set("n", "<leader><space>", "<cmd>Find<cr>")
     vim.keymap.set("n", "<leader>/", [[<cmd>lua require('vscode').action('workbench.action.findInFiles')<cr>]])
     vim.keymap.set("n", "<leader>ss", [[<cmd>lua require('vscode').action('workbench.action.gotoSymbol')<cr>]])
   end,

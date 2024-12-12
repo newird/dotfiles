@@ -1,51 +1,87 @@
--- This file is automatically loaded by lazyvim.config.init
+-- this file was mostly translate from
+-- https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim
+-- Navigate vim panes better
+local map = vim.keymap.set
+map("n", "<C-c>", "<Esc>")
+map("i", "<C-c>", "<Esc>")
+map("v", "<C-c>", "<Esc>")
+map("s", "<C-c>", "<Esc>")
+map("x", "<C-c>", "<Esc>")
+map("c", "<C-c>", "<C-c>")
+map("o", "<C-c>", "<Esc>")
+map("l", "<C-c>", "<Esc>")
+map("t", "<C-c>", "<Esc>")
 
--- DO NOT USE `LazyVim.safe_keymap_set` IN YOUR OWN CONFIG!!
--- use `vim.keymap.set` instead
-local map = LazyVim.safe_keymap_set
+-- No arrow keys --- force yourself to use the home row
+map("n", "<up>", "<nop>")
+map("n", "<down>", "<nop>")
+map("i", "<up>", "<nop>")
+map("i", "<down>", "<nop>")
+map("i", "<left>", "<nop>")
+map("i", "<right>", "<nop>")
 
--- better up/down
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+-- Left and right can switch buffers
+map("n", "<left>", ":bp<CR>")
+map("n", "<right>", ":bn<CR>")
 
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+-- markdown preview
 
--- Resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+-- Move by line
+map("n", "j", "gj")
+map("n", "k", "gk")
 
--- Move Lines
-map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+-- Visual mode mappings (again, for completeness)
+map("v", "<Leader>p", "+p")
+map("v", "<Leader>P", "+P")
 
--- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>bd", function()
-  Snacks.bufdelete()
-end, { desc = "Delete Buffer" })
-map("n", "<leader>bo", function()
-  Snacks.bufdelete.other()
-end, { desc = "Delete Other Buffers" })
-map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
+-- select all
+map("n", "<Leader>a", "ggVG")
 
--- Clear search with <esc>
+-- greatest remap ever
+map("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+map({ "n", "v" }, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
+
+map({ "n", "v" }, "<leader>D", [["_d]])
+-- magic search
+map("n", "<leader>pv", vim.cmd.Ex)
+
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
+map("n", "J", "mzJ`z")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+-- map('n', 'n', 'nzzzv')
+-- map('n', 'N', 'Nzzzv')
+
+map("n", "<leader>rs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Search results centered please
+map("n", "<silent> n", "nzzzv")
+map("n", "<silent> N", "Nzzzv")
+map("n", "<silent> *", "*zz")
+map("n", "<silent> #", "#zz")
+map("n", "<silent> g*", "g*zz")
+
+-- resize windows
+map("n", "<M-l>", "<c-w>5>")
+map("n", "<M-h>", "<c-w>5<")
+map("n", "<M-j>", "<C-W>-")
+map("n", "<M-k>", "<C-W>+")
+
+--fold
+local function close_all_folds()
+  vim.api.nvim_exec2("%foldc!", { output = false })
+end
+local function open_all_folds()
+  vim.api.nvim_exec2("%foldo!", { output = false })
+end
+vim.keymap.set("n", "<leader>zc", close_all_folds, { desc = "[c]lose all folds" })
+vim.keymap.set("n", "<leader>zo", open_all_folds, { desc = "[o]pen all folds" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
 -- Clear search, diff update and redraw
@@ -146,7 +182,8 @@ if vim.fn.executable("lazygit") == 1 then
 end
 
 -- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit One" })
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
@@ -171,15 +208,6 @@ map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 LazyVim.ui.maximize():map("<leader>wm")
-
--- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- native snippets. only needed on < 0.11, as 0.11 creates these by default
 if vim.fn.has("nvim-0.11") == 0 then

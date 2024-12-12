@@ -1,23 +1,24 @@
-local M = {}
-
----@param opts conform.setupOpts
-function M.setup(_, opts)
-  for _, key in ipairs({ "format_on_save", "format_after_save" }) do
-    if opts[key] then
-      local msg = "Don't set `opts.%s` for `conform.nvim`.\n**LazyVim** will use the conform formatter automatically"
-      LazyVim.warn(msg:format(key))
-      ---@diagnostic disable-next-line: no-unknown
-      opts[key] = nil
-    end
-  end
-  ---@diagnostic disable-next-line: undefined-field
-  if opts.format then
-    LazyVim.warn("**conform.nvim** `opts.format` is deprecated. Please use `opts.default_format_opts` instead.")
-  end
-  require("conform").setup(opts)
-end
-
+--
+-- local M = {}
+--
+-- ---@param opts conform.setupOpts
+-- function M.setup(_, opts)
+--   for _, key in ipairs({ "format_on_save", "format_after_save" }) do
+--     if opts[key] then
+--       local msg = "Don't set `opts.%s` for `conform.nvim`.\n**LazyVim** will use the conform formatter automatically"
+--       LazyVim.warn(msg:format(key))
+--       ---@diagnostic disable-next-line: no-unknown
+--       opts[key] = nil
+--     end
+--   end
+--   ---@diagnostic disable-next-line: undefined-field
+--   if opts.format then
+--     LazyVim.warn("**conform.nvim** `opts.format` is deprecated. Please use `opts.default_format_opts` instead.")
+--   end
+--   require("conform").setup(opts)
+-- end
 return {
+
   {
     "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
@@ -54,14 +55,6 @@ return {
       end)
     end,
     opts = function()
-      local plugin = require("lazy.core.config").plugins["conform.nvim"]
-      if plugin.config ~= M.setup then
-        LazyVim.error({
-          "Don't set `plugin.config` for `conform.nvim`.\n",
-          "This will break **LazyVim** formatting.\n",
-          "Please refer to the docs at https://www.lazyvim.org/plugins/formatting",
-        }, { title = "LazyVim" })
-      end
       ---@type conform.setupOpts
       local opts = {
         default_format_opts = {
@@ -72,29 +65,46 @@ return {
         },
         formatters_by_ft = {
           lua = { "stylua" },
+          -- Conform will run multiple formatters sequentially
+          python = { "ruff_format" },
+          -- Use a sub-list to run only the first available formatter
+          javascript = { "biome" },
+          ["javascriptreact"] = { "biome" },
+          ["typescript"] = { "biome" },
+          ["typescriptreact"] = { "biome" },
+          ["jsonc"] = { "biome" },
+          go = { "goimports", "gofmt" },
+          cpp = { "clang_format" },
+          c = { "clang_format" },
           fish = { "fish_indent" },
-          sh = { "shfmt" },
+          asm = { "asmfmt" },
+          bib = { "bibtext-tidy" },
+          latex = { "llf" },
+          json = { "jq" },
+          just = { "just" },
+          bash = { "shfmt" },
+          rust = { "rustfmt" },
+          gleam = { "gleam" },
+          md = { "markdownlint" },
+          ["*"] = { "trim_whitespace" },
         },
+        formatters = {
+          injected = { options = { ignore_errors = true } },
+          clang_format = {
+            command = "/usr/local/bin/clang-format",
+            prepend_args = { "--fallback-style=Google" },
+          },
+        },
+        -- format_on_save = {
+        --   -- I recommend these options. See :help conform.format for details.
+        --   lsp_format = "fallback",
+        --   timeout_ms = 500,
+        -- },
         -- The options you set here will be merged with the builtin formatters.
         -- You can also define any custom formatters here.
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
-        formatters = {
-          injected = { options = { ignore_errors = true } },
-          -- # Example of using dprint only when a dprint.json file is present
-          -- dprint = {
-          --   condition = function(ctx)
-          --     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
-          --   end,
-          -- },
-          --
-          -- # Example of using shfmt with extra args
-          -- shfmt = {
-          --   prepend_args = { "-i", "2", "-ci" },
-          -- },
-        },
       }
       return opts
     end,
-    config = M.setup,
   },
 }
