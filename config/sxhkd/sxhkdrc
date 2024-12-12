@@ -19,6 +19,8 @@ super + b
 super + e
   rofi -show emoji
 
+super + n
+  sigma-file-manager
 #
 # bspwm hotkeys
 #

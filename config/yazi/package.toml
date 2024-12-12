@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "Sonico98/exifaudio", rev = "855ff05" }, { use = "sharklasers996/eza-preview", rev = "7ca4c25" }, { use = "Reledia/glow", rev = "388e847" }, { use = "KKV9/archive", rev = "60b24af" }, { use = "yazi-rs/plugins:chmod", rev = "4a6edc3" }, { use = "GianniBYoung/rsync", rev = "3f431aa" }, { use = "TD-Sky/sudo", rev = "7cbc3f1" }, { use = "ndtoan96/ouch", rev = "db14883" }, { use = "Lil-Dank/lazygit", rev = "c82794f" }]
+
+[flavor]
+deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "4f127be" }]

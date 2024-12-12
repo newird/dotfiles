@@ -1,1 +1,0 @@
-/home/newird/.fzf/shell/key-bindings.fish
