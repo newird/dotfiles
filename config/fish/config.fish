@@ -122,3 +122,8 @@ if command -v eza >>/dev/null
 end
 
 fish_add_path /home/newird/.pixi/bin
+
+
+# >>> coursier install directory >>>
+set -gx PATH "$PATH:/home/newird/.local/share/coursier/bin"
+# <<< coursier install directory <<<

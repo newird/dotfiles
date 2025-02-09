@@ -196,7 +196,7 @@ return {
         vim.api.nvim_set_current_win(window)
       end
 
-      vim.keymap.set("n", "<leader><leader>w", focus_window)
+      vim.keymap.set("n", "<leader>fw", focus_window)
     end,
   },
 }
