@@ -86,6 +86,7 @@ bspc rule -a maim  state=floating
 bspc rule -a peek sticky=on state=fullscreen
 bspc rule -a mupdf  state=floating
 bspc rule -a neovide desktop=^2
+bspc rule -a Neohtop state=floating
 bspc rule -a firefox-developer-edition desktop=^3
 bspc rule -a firefox desktop=^3
 bspc rule -a Zotero desktop=^8

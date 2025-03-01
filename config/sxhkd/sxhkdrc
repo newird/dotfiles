@@ -5,8 +5,9 @@ super + ctrl + { j, k }
     bspc node -f {next, prev}.local
 # terminal emulator
 super + Return
-    kitty
-
+    ghostty
+super + y
+    ghostty -e fish -c "yy" & sleep 0.1 && bspc node -d '^4'
 # program launcher
 super + space
 	rofi -show run
