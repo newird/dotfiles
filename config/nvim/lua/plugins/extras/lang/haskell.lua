@@ -48,10 +48,11 @@ return {
     optional = true,
     dependencies = {
       { "mrcjkb/neotest-haskell" },
+      { "nvim-neotest/nvim-nio" },
     },
     opts = {
       adapters = {
-        ["neotest-haskell"] = {},
+        require("neotest-haskell"),
       },
     },
   },

@@ -35,7 +35,7 @@ map("v", "<Leader>p", "+p")
 map("v", "<Leader>P", "+P")
 
 -- select all
-map("n", "<Leader>a", "ggVG")
+map("n", "<Leader>ma", "ggVG")
 
 -- greatest remap ever
 map("x", "<leader>p", [["_dP]])
@@ -183,6 +183,7 @@ end
 
 -- quit
 map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit One" })
+map("n", "<leader>qf", "<cmd>q!<cr>", { desc = "Quit Force" })
 map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
 
 -- highlights under cursor
