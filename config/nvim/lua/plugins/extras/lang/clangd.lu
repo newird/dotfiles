@@ -54,6 +54,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+
       servers = {
         -- Ensure mason installs the server
         clangd = {
@@ -98,6 +99,17 @@ return {
           require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
           return false
         end,
+      },
+    },
+  },
+
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        c = { "clang-format" },
+        cpp = { "clang-format" },
       },
     },
   },

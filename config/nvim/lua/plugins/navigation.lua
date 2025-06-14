@@ -8,8 +8,8 @@ return {
     opts = {
       vim.keymap.set("n", "<leader>fm", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
       keymaps = {
-        ["l"] = "actions.select",
-        ["h"] = "actions.parent",
+        ["enter"] = "actions.select",
+        ["C-p"] = "actions.parent",
         ["q"] = "actions.close",
       },
     },

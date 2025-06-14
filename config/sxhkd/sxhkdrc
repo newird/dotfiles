@@ -6,8 +6,6 @@ super + ctrl + { j, k }
 # terminal emulator
 super + Return
     ghostty
-super + y
-    ghostty -e fish -c "yy" & sleep 0.1 && bspc node -d '^4'
 # program launcher
 super + space
 	rofi -show run
@@ -151,7 +149,7 @@ super + shift + b
 	opdrofi
 
 super + shift + m
-  firefox
+  brave
 
 super + shift + n
   telegram-desktop
@@ -177,11 +175,3 @@ super + shift + u
 		reboot
 shift + alt + b
 	brgtindic
-
-
-
-
-
-
-
-

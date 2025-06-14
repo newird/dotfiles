@@ -17,10 +17,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        coqlsp = {
-          -- opam install coq-lsp
-          cmd = { "coq-lsp" }, -- 假设系统中已安装 coq-lsp
-          filetypes = { "coq" },
+        coq_lsp = {
+          cmd = { "coq-lsp" }, -- 指定 LSP 可执行文件的命令
+          filetypes = { "coq" }, -- 适用于 Coq 文件
           root_dir = function(fname)
             return require("lspconfig.util").find_git_ancestor(fname) or vim.fn.getcwd()
           end,
@@ -34,13 +33,7 @@ return {
           },
         },
       },
-      setup = {},
     },
-  },
-  -- 确保 Coq 工具安装 (通过 Mason)
-  {
-    "williamboman/mason.nvim",
-    opts = { ensure_installed = { "coq-lsp" } }, -- Mason 支持安装 coq-lsp
   },
 
   -- 文件类型图标

@@ -4,6 +4,7 @@ if status is-interactive
     zoxide init fish | source
     starship init fish | source
     pixi completion --shell fish | source
+    direnv hook fish | source
 end
 
 ## fish t for tmux
@@ -14,10 +15,17 @@ fish_add_path $HOME/git/fzf-fuzzy/bin
 fish_add_path $GOPATH/bin
 fish_add_path $HOME/.pixi/bin
 fish_add_path $HOME/.bun/bin
+# >>> coursier install directory >>>
+fish_add_path $HOME/.local/share/coursier/bin
+# <<< coursier install directory <<<
+# pnpm
+set -gx PNPM_HOME $HOME/.local/share/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    fish_add_path $PNPM_HOME
+end
+# pnpm end
 # opam configuration
 source $HOME/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
-
-# bun
 
 set fish_key_bindings fish_vi_key_bindings
 bind yy fish_clipboard_copy
@@ -31,12 +39,9 @@ end
 abbr -a paru paru --bottomup
 abbr -a pp paruz
 
-# exec node
-#if command -v node > /dev/null 2>&1
-#	node -v  > /dev/null 2>&1
-#end
-# use bar replace cat
-
+# docker
+abbr -a pc podman-compose
+abbr -a lzd lazydocker
 #locale us
 set -gx LC_CTYPE en_US.UTF-8
 # editor
@@ -45,10 +50,14 @@ set -gx VISUAL nvim
 # for neovide since it's no-fork for now
 # https://github.com/neovide/neovide/issues/2597
 set -gx NEOVIDE_FORK 1
+# for tauri 
+set -gx WEBKIT_DISABLE_DMABUF_RENDERER 1
 
-if command -v bat >/dev/null 2>&1
-    abbr -a ss bat
-end
+# use mold as linker 
+set -gx LD /usr/bin/mold
+# ghostty 
+set -gx TERM xterm-256color
+
 # safe rm
 if command -v rip >/dev/null 2>&1
     abbr -a rm rip
@@ -103,7 +112,7 @@ abbr -a ..... cd ../../../..
 # my alias
 abbr -a c clear
 abbr -a vv nvim
-abbr -a vd neovide &
+abbr -a vd neovide
 abbr -a cf clang-format
 abbr -a sf fastfetch
 abbr -a ou ouch decompress
@@ -120,10 +129,3 @@ if command -v eza >>/dev/null
     abbr -a lg eza -la --icons --git
     abbr -a lt eza -la --icons --tree --long --level=2
 end
-
-fish_add_path /home/newird/.pixi/bin
-
-
-# >>> coursier install directory >>>
-set -gx PATH "$PATH:/home/newird/.local/share/coursier/bin"
-# <<< coursier install directory <<<

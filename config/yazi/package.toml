@@ -1,5 +1,49 @@
-[plugin]
-deps = [{ use = "Sonico98/exifaudio", rev = "855ff05" }, { use = "sharklasers996/eza-preview", rev = "7ca4c25" }, { use = "Reledia/glow", rev = "388e847" }, { use = "KKV9/archive", rev = "60b24af" }, { use = "yazi-rs/plugins:chmod", rev = "4a6edc3" }, { use = "GianniBYoung/rsync", rev = "3f431aa" }, { use = "TD-Sky/sudo", rev = "7cbc3f1" }, { use = "ndtoan96/ouch", rev = "db14883" }, { use = "Lil-Dank/lazygit", rev = "c82794f" }]
+[[plugin.deps]]
+use = "Sonico98/exifaudio"
+rev = "855ff05"
+hash = "ff4e26f6552da19948e3f74d342d06b4"
 
-[flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "4f127be" }]
+[[plugin.deps]]
+use = "sharklasers996/eza-preview"
+rev = "7ca4c25"
+hash = "d1efd1931dd738af0d6e4f41dd491313"
+
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "388e847"
+hash = "cb995032091f556762646936565fa516"
+
+[[plugin.deps]]
+use = "KKV9/archive"
+rev = "60b24af"
+hash = "ee025be766240cc98e671754ac836da3"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "4a6edc3"
+hash = "36c82bb433078e8e752351d961cac777"
+
+[[plugin.deps]]
+use = "GianniBYoung/rsync"
+rev = "3f431aa"
+hash = "f17ed1f83b5e6ca464dd5409c61e73af"
+
+[[plugin.deps]]
+use = "TD-Sky/sudo"
+rev = "7cbc3f1"
+hash = "a06e8c1bbcad93a6671050a3c00b02bd"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "db14883"
+hash = "7ca567795094152e15299c9dd50c6793"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "c82794f"
+hash = "2b0c33928986f126d5c5a4cac31a6b46"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "4f127be"
+hash = "dc7a1610014caab818e1e43f0c860773"

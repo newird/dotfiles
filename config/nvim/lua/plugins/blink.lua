@@ -23,11 +23,10 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "Kaiser-Yang/blink-cmp-avante",
-      -- ... Other dependencies
     },
     opts = {
       sources = {
-        default = { "avante" },
+        default = { "lsp", "snippets", "path", "omni", "buffer", "avante" },
         providers = {
           avante = {
             module = "blink-cmp-avante",
