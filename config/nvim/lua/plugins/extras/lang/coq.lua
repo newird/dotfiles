@@ -38,7 +38,7 @@ return {
 
   -- 文件类型图标
   {
-    "echasnovski/mini.icons",
+    "nvim-mini-mini/mini.icons",
     opts = {
       file = {
         [".v"] = { glyph = "λ", hl = "MiniIconsPurple" }, -- Coq 文件图标

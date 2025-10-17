@@ -97,7 +97,7 @@ return {
   --
   -- -- Ensure Rust debugger is installed
   -- {
-  --   "williamboman/mason.nvim",
+  --   "mason-org/mason.nvim",
   --   optional = true,
   --   opts = { ensure_installed = { "codelldb" } },
   -- },
