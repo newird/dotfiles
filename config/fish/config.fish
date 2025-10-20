@@ -5,11 +5,13 @@ if status is-interactive
     starship init fish | source
     pixi completion --shell fish | source
     direnv hook fish | source
+    fnm env | source
+    sk --shell fish | source
 end
 
 ## fish t for tmux
+set -gx PATH $HOME/.local/bin $PATH
 fish_add_path $HOME/.cargo/bin
-fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.deno/bin
 fish_add_path $HOME/git/fzf-fuzzy/bin
 fish_add_path $GOPATH/bin
@@ -19,11 +21,6 @@ fish_add_path $HOME/.bun/bin
 fish_add_path $HOME/.local/share/coursier/bin
 # <<< coursier install directory <<<
 # pnpm
-set -gx PNPM_HOME $HOME/.local/share/pnpm
-if not string match -q -- $PNPM_HOME $PATH
-    fish_add_path $PNPM_HOME
-end
-# pnpm end
 # opam configuration
 source $HOME/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 

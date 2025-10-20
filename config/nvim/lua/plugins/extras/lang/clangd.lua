@@ -9,6 +9,8 @@ return {
         "compile_commands.json",
         "compile_flags.txt",
         "configure.ac", -- AutoTools
+        "meson.build",
+        "build.ninja",
       },
     })
   end,
@@ -54,26 +56,25 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-
       servers = {
         -- Ensure mason installs the server
         clangd = {
           keys = {
-            { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+            { "<leader>ch", "<cmd>LspClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
           },
-          root_dir = function(fname)
-            return require("lspconfig.util").root_pattern(
-              "Makefile",
-              "configure.ac",
-              "configure.in",
-              "config.h.in",
-              "meson.build",
-              "meson_options.txt",
-              "build.ninja"
-            )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
-              fname
-            ) or require("lspconfig.util").find_git_ancestor(fname)
-          end,
+          root_markers = {
+            "compile_commands.json",
+            "compile_flags.txt",
+            "configure.ac", -- AutoTools
+            "Makefile",
+            "configure.ac",
+            "configure.in",
+            "config.h.in",
+            "meson.build",
+            "meson_options.txt",
+            "build.ninja",
+            ".git",
+          },
           capabilities = {
             offsetEncoding = { "utf-16" },
           },
@@ -104,19 +105,11 @@ return {
   },
 
   {
-    "stevearc/conform.nvim",
+    "hrsh7th/nvim-cmp",
     optional = true,
-    opts = {
-      formatters_by_ft = {
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-      },
-    },
-  },
-
-  {
-    "nvim-cmp",
     opts = function(_, opts)
+      opts.sorting = opts.sorting or {}
+      opts.sorting.comparators = opts.sorting.comparators or {}
       table.insert(opts.sorting.comparators, 1, require("clangd_extensions.cmp_scores"))
     end,
   },

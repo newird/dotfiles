@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  opts = { "skim" },
   keys = {
     {
       "<leader>fa",
