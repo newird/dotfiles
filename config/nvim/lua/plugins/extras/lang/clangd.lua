@@ -15,6 +15,17 @@ return {
     })
   end,
 
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+      },
+    },
+  },
+
   -- Add C/C++ to treesitter
   {
     "nvim-treesitter/nvim-treesitter",
