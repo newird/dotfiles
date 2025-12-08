@@ -5,7 +5,7 @@ function stt
     end
 
     # Launch fzf with the tmux sessions
-    set SESSION_NAME (get_sessions_by_mru | fzf \
+    set SESSION_NAME (get_sessions_by_mru | sk \
         --preview 'tmux list-windows -t {}' \
         --preview-window=right:50%:wrap \
         --prompt "sessions> " \

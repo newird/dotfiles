@@ -1,12 +1,20 @@
 if status is-interactive
     # atuin
-    atuin init fish | source
+    if command -v atuin >> /dev/null
+     atuin init fish | source
+    end
+    if command -v zoxide>> /dev/null
     zoxide init fish | source
+    end
+    if command -v starship >> /dev/null
     starship init fish | source
-    pixi completion --shell fish | source
-    direnv hook fish | source
-    fnm env | source
+    end
+    if command -v sk>> /dev/null
     sk --shell fish | source
+    end
+    if command -v direnv>> /dev/null
+    direnv hook fish | source
+    end
 end
 
 ## fish t for tmux
@@ -47,12 +55,12 @@ set -gx VISUAL nvim
 # for neovide since it's no-fork for now
 # https://github.com/neovide/neovide/issues/2597
 set -gx NEOVIDE_FORK 1
-# for tauri 
+# for tauri
 set -gx WEBKIT_DISABLE_DMABUF_RENDERER 1
 
-# use mold as linker 
+# use mold as linker
 set -gx LD /usr/bin/mold
-# ghostty 
+# ghostty
 set -gx TERM xterm-256color
 
 # safe rm
@@ -115,7 +123,9 @@ abbr -a sf fastfetch
 abbr -a ou ouch decompress
 abbr -a pxy proxychains
 ## uu
-source $HOME/.config/fish/alias/uu.fish
+if command -v uu-cp >> /dev/null
+     source $HOME/.config/fish/alias/uu.fish
+end
 #eza
 if command -v eza >>/dev/null
     abbr -a l eza
@@ -125,4 +135,18 @@ if command -v eza >>/dev/null
     abbr -a lll eza -la --icons
     abbr -a lg eza -la --icons --git
     abbr -a lt eza -la --icons --tree --long --level=2
+end
+
+
+set _base_cmake_cmd "cmake -S . -B build -G Ninja"
+set _compilers "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang"
+set _export_compile_commands "-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+if command -v sccache >/dev/null
+    set launcher "-DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache"
+    abbr -a ca $_base_cmake_cmd $compilers $_export_compile_commands $launcher
+else if command -v ccache >/dev/null
+    set launcher "-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+    abbr -a ca $_base_cmake_cmd $_compilers $_export_compile_commands $launcher
+else
+    abbr -a ca $_base_cmake_cmd $_compilers $_export_compile_commands
 end
