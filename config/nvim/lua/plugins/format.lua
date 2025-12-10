@@ -10,6 +10,7 @@ return {
       python = { "ruff_format" },
       c = { "clang-format" },
       cpp = { "clang-format" },
+      tablegen = { "clang-format" },
       go = { "goimports", "gofmt" },
       rust = { "rustfmt", lsp_format = "fallback" },
       sh = { "shfmt" },
