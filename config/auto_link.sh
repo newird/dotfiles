@@ -1,18 +1,30 @@
 #!/bin/bash
 
-# Iterate through all directories in the current directory
-for dir in */; do
-    # Trim the trailing slash to get the directory name
-    config_name=${dir%/}
+TIMESTAMP=$(date +"%Y%m%d")
 
-    # Check if a link or directory with the same name already exists in ~/.config
-    if [ -e ~/.config/$config_name ]; then
-        echo "Removing existing ~/.config/$config_name..."
-        rm -rf ~/.config/$config_name
+mkdir -p ~/.config
+
+for dir in */; do
+  config_name=${dir%/}
+
+  source_path="$PWD/$config_name"
+  target_path="$HOME/.config/$config_name"
+
+  if [ -e "$target_path" ] || [ -L "$target_path" ]; then
+
+    current_link=$(readlink -f "$target_path")
+    if [ "$current_link" == "$source_path" ]; then
+      echo "[$config_name] already linked to target"
+      continue
     fi
 
-    # Create a symbolic link in ~/.config
-    ln -s "$(pwd)/$config_name" ~/.config/$config_name
-    echo "Link created for $config_name"
+    backup_name="${target_path}.bak_${TIMESTAMP}"
+    echo "found old config, backing up to: $target_path -> $backup_name"
+    mv "$target_path" "$backup_name"
+  fi
+
+  ln -s "$source_path" "$target_path"
+  echo "[$config_name] config success"
 done
 
+echo "all done!"
