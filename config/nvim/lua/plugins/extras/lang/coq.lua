@@ -21,7 +21,7 @@ return {
           cmd = { "coq-lsp" },   -- 指定 LSP 可执行文件的命令
           filetypes = { "coq" }, -- 适用于 Coq 文件
           root_dir = function(fname)
-            return require("lspconfig.util").find_git_ancestor(fname) or vim.fn.getcwd()
+            return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1]) or vim.fn.getcwd()
           end,
           settings = {
             coq = {

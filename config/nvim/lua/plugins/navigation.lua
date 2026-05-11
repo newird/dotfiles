@@ -6,12 +6,14 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
-      vim.keymap.set("n", "<leader>fm", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
       keymaps = {
         ["enter"] = "actions.select",
         ["C-p"] = "actions.parent",
         ["q"] = "actions.close",
       },
+    },
+    keys = {
+      { "<leader>fm", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
     -- Optional dependencies
     dependencies = { { "nvim-mini/mini.icons", opts = {} } },
@@ -91,7 +93,7 @@ return {
             -- You can change the display string in status bar.
             -- It supports '%' printf style. Such as `return char .. ': %f'` to display
             -- buffer file path. See :h 'stl' for details.
-            selection_display = function(char, windowid)
+            selection_display = function(char, _windowid)
               return "%=" .. char .. "%="
             end,
 
@@ -193,7 +195,9 @@ return {
       })
       local function focus_window()
         local window = picker.pick_window()
-        vim.api.nvim_set_current_win(window)
+        if window then
+          vim.api.nvim_set_current_win(window)
+        end
       end
 
       vim.keymap.set("n", "<leader>fw", focus_window)

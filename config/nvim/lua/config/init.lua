@@ -3,7 +3,7 @@ _G.LazyVim = require("lazyvim.util")
 ---@class LazyVimConfig: LazyVimOptions
 local M = {}
 
-M.version = "13.5.2" -- x-release-please-version
+M.version = "16.6.0" -- x-release-please-version
 LazyVim.config = M
 
 ---@class LazyVimOptions
@@ -136,7 +136,7 @@ local defaults = {
 }
 
 M.json = {
-  version = 7,
+  version = 8,
   path = vim.g.lazyvim_json or vim.fn.stdpath("config") .. "/lazyvim.json",
   data = {
     version = nil, ---@type string?
@@ -227,7 +227,7 @@ function M.setup(opts)
 end
 
 ---@param buf? number
----@return string[]?
+---@return string[]|boolean?
 function M.get_kind_filter(buf)
   buf = (buf == nil or buf == 0) and vim.api.nvim_get_current_buf() or buf
   local ft = vim.bo[buf].filetype

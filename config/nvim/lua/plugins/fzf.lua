@@ -1,6 +1,8 @@
 return {
   "ibhagwan/fzf-lua",
-  opts = { "skim" },
+  opts = {
+    fzf_bin = "skim",
+  },
   keys = {
     {
       "<leader>fa",

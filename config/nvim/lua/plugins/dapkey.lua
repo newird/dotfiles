@@ -91,13 +91,6 @@ return {
         end,
         desc = "Restart debugging",
       },
-      {
-        "<leader>dt",
-        function()
-          require("dap").terminate()
-        end,
-        desc = "Terminate debugging",
-      },
     },
 
     config = function()
@@ -109,6 +102,8 @@ return {
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
       for name, sign in pairs(LazyVim.config.icons.dap) do
+        ---@type string[]
+        ---@diagnostic disable-next-line: assign-type-mismatch
         sign = type(sign) == "table" and sign or { sign }
         vim.fn.sign_define(
           "Dap" .. name,
@@ -117,11 +112,7 @@ return {
       end
 
       -- setup dap config by VsCode launch.json file
-      local vscode = require("dap.ext.vscode")
-      local json = require("plenary.json")
-      vscode.json_decode = function(str)
-        return vim.json.decode(json.json_strip_comments(str))
-      end
+      -- json_decode is already defined in newer nvim-dap with skip_comments support
     end,
   },
 
@@ -164,7 +155,7 @@ return {
       handlers = {},
 
       -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
+      -- online, please don't ask me how to do it :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
       },

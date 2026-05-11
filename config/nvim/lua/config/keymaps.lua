@@ -156,7 +156,9 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 -- stylua: ignore start
 
 -- toggle options
+---@diagnostic disable-next-line: deprecated
 LazyVim.format.snacks_toggle():map("<leader>uf")
+---@diagnostic disable-next-line: deprecated
 LazyVim.format.snacks_toggle(true):map("<leader>uF")
 Snacks.toggle.option("spell", { name = "Spelling"}):map("<leader>us")
 Snacks.toggle.option("wrap", {name = "Wrap"}):map("<leader>uw")
